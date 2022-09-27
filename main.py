@@ -5,18 +5,12 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-class Paper(BaseModel):
-    id: int
-    name: str
-    author: str
-    link: str
-
 class Problem(BaseModel):
     id: int
     name: str
     # also known as
     altnames: list[str] = []
-    # the papers it was introduced at
+    # the papers it was introduced at (bibtex)
     references: list[str] = []
     # (complexity based on the formula, name of algorithm,
     # reference to paper, name of author to paper)
@@ -27,7 +21,7 @@ class Problem(BaseModel):
 class Reductions(BaseModel):
     input: str
     output: str
-    references: list[Paper] = []
+    references: list[str] = []
     formulas: list[(str, str)] = []
     verified: bool
     link: str 
