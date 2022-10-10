@@ -5,6 +5,7 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
+
 class Problem(BaseModel):
     id: int
     name: str

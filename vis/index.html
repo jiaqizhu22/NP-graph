@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Network</title>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"
+    ></script>
+    <style type="text/css">
+      #mynetwork {
+        width: 1000px;
+        height: 900px;
+        border: 1px solid lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mynetwork"></div>
+    <script type="text/javascript">
+      // create an array with nodes
+      var nodes = new vis.DataSet([
+        { id: 1, label: "Satisfiability", title: "Pop up" },
+        { id: 2, label: "Clique" },
+        { id: 3, label: "0-1 Integer Programming" },
+        { id: 4, label: "3SAT" },
+        { id: 5, label: "Node Cover" },
+        { id: 6, label: "Set Packing" },
+        { id: 7, label: "Chromatic Number" },
+        { id: 8, label: "Feedback Node Set" },
+        { id: 9, label: "Feedback Arc Set" },
+        { id: 10, label: "Directed Hamilton Circuit" },
+        { id: 11, label: "Set Covering" },
+        { id: 12, label: "Exact Cover" },
+        { id: 13, label: "Clique Cover" },
+        { id: 14, label: "Undirected Hamilton Circuit" },
+        { id: 15, label: "3-Dimensional Matching" },
+        { id: 16, label: "Knapsack" },
+        { id: 17, label: "Hitting Set" },
+        { id: 18, label: "Steiner Tree" },
+        { id: 19, label: "Sequencing" },
+        { id: 20, label: "Partition" },
+        { id: 21, label: "Max Cut" }
+      ]);
+
+      // create an array with edges
+      var edges = new vis.DataSet([
+        { from: 1, to: 2, title: "Pop up", arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 1, to: 3, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 1, to: 4, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 2, to: 5, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 2, to: 6, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 4, to: 7, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 7, to: 12, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 7, to: 13, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 5, to: 8, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 5, to: 9, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 5, to: 10, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 5, to: 11, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 10, to: 14, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 12, to: 15, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 12, to: 16, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 12, to: 17, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 12, to: 18, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 16, to: 19, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 16, to: 20, arrows: { to: { enabled: true, type: "arrow" }}},
+        { from: 20, to: 21, arrows: { to: { enabled: true, type: "arrow" }}},
+      ]);
+
+      // create a network
+      var container = document.getElementById("mynetwork");
+      var data = {
+        nodes: nodes,
+        edges: edges,
+      };
+      var options = {};
+      var network = new vis.Network(container, data, options);
+    </script>
+  </body>
+</html>
