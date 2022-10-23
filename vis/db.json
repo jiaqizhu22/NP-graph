@@ -1,0 +1,106 @@
+{
+    "problems": [
+        {
+            "name": "3SAT",
+            "id": "1",
+            "also_known_as": ["Satisfiability with at least 3 parameters","3Sat"],
+            "introduced_at": [""],
+            "parameters" : [["u","number of variables"], ["k","number of clauses"]],
+            "algorithms": [],
+            "category": [""]
+        }, {
+            "name": "Directed Hamiltonian Path",
+            "id": "2",
+            "also_known_as": [],
+            "introduced_at": [""],
+            "parameters" : [["",""], ["",""]],
+            "algorithms": [],
+            "category": [""]
+        }, {
+            "name": "Vertex Cover",
+            "id": "3",
+            "also_known_as": ["Satisfiability"],
+            "introduced_at": [""],
+            "parameters" : [["",""], ["",""]],
+            "algorithms": [],
+            "category": [""]
+        }, {
+            "name": "Clique",
+            "id": "4",
+            "also_known_as": ["Satisfiability"],
+            "introduced_at": [""],
+            "parameters" : [["",""], ["",""]],
+            "algorithms": [],
+            "category": [""]
+        }, {
+            "name": "3-Dimensional Matching",
+            "id": "5",
+            "also_known_as": ["Satisfiability"],
+            "introduced_at": [""],
+            "parameters" : [["",""], ["",""]],
+            "algorithms": [],
+            "category": [""]
+        }, {
+            "name": "Undirected Hamiltonian Path",
+            "id": "6",
+            "also_known_as": [],
+            "introduced_at": [""],
+            "parameters" : [["",""], ["",""]],
+            "algorithms": [],
+            "category": [""]
+        }
+
+    ],
+    "reductions": [
+        {
+            "input": 1,
+            "output": 2,
+            "introduced_at": [""],
+            "formula": [["output", "complexity"]],
+            "verified": true,
+            "link": ""
+        }, {
+            "input": 1,
+            "output": 3,
+            "introduced_at": [""],
+            "formula": [["output", "complexity"]],
+            "verified": true,
+            "link": ""
+        }, {
+            "input": 1,
+            "output": 4,
+            "introduced_at": [""],
+            "formula": [["output", "complexity"]],
+            "verified": true,
+            "link": ""
+        }, {
+            "input": 1,
+            "output": 5,
+            "introduced_at": [""],
+            "formula": [["output", "complexity"]],
+            "verified": true,
+            "link": ""
+        }, {
+            "input": 2,
+            "output": 6,
+            "introduced_at": [""],
+            "formula": [["output", "complexity"]],
+            "verified": true,
+            "link": ""
+        }, {
+            "input": 1,
+            "output": 6,
+            "introduced_at": [""],
+            "formula": [["output", "complexity"]],
+            "verified": true,
+            "link": ""
+        }, {
+            "input": 3,
+            "output": 6,
+            "introduced_at": [""],
+            "formula": [["output", "complexity"]],
+            "verified": true,
+            "link": ""
+        }
+    ]
+}
