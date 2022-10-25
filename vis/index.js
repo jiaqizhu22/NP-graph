@@ -1,117 +1,12 @@
-// fake data
-const json = {
-  "problems": [
-      {
-          "name": "3SAT",
-          "id": "1",
-          "also_known_as": ["Satisfiability with at least 3 parameters","3Sat"],
-          "introduced_at": [""],
-          "parameters" : [["u","number of variables"], ["k","number of clauses"]],
-          "algorithms": [],
-          "category": ["A"]
-      }, {
-          "name": "Directed Hamiltonian Path",
-          "id": "2",
-          "also_known_as": [],
-          "introduced_at": [""],
-          "parameters" : [["",""], ["",""]],
-          "algorithms": [],
-          "category": ["A", "B"]
-      }, {
-          "name": "Vertex Cover",
-          "id": "3",
-          "also_known_as": ["Satisfiability"],
-          "introduced_at": [""],
-          "parameters" : [["",""], ["",""]],
-          "algorithms": [],
-          "category": ["B"]
-      }, {
-          "name": "Clique",
-          "id": "4",
-          "also_known_as": ["Satisfiability"],
-          "introduced_at": [""],
-          "parameters" : [["",""], ["",""]],
-          "algorithms": [],
-          "category": ["B"]
-      }, {
-          "name": "3-Dimensional Matching",
-          "id": "5",
-          "also_known_as": ["Satisfiability"],
-          "introduced_at": [""],
-          "parameters" : [["",""], ["",""]],
-          "algorithms": [],
-          "category": ["B", "C"]
-      }, {
-          "name": "Undirected Hamiltonian Path",
-          "id": "6",
-          "also_known_as": [],
-          "introduced_at": [""],
-          "parameters" : [["",""], ["",""]],
-          "algorithms": [],
-          "category": ["A", "B", "C"]
-      }
+import json from "./db.json" assert { type: "json" };
 
-  ],
-  "reductions": [
-      {
-          "input": 1,
-          "output": 2,
-          "introduced_at": [""],
-          "formula": [["output", "complexity"]],
-          "verified": true,
-          "link": ""
-      }, {
-          "input": 1,
-          "output": 3,
-          "introduced_at": [""],
-          "formula": [["output", "complexity"]],
-          "verified": true,
-          "link": ""
-      }, {
-          "input": 1,
-          "output": 4,
-          "introduced_at": [""],
-          "formula": [["output", "complexity"]],
-          "verified": true,
-          "link": ""
-      }, {
-          "input": 1,
-          "output": 5,
-          "introduced_at": [""],
-          "formula": [["output", "complexity"]],
-          "verified": true,
-          "link": ""
-      }, {
-          "input": 2,
-          "output": 6,
-          "introduced_at": [""],
-          "formula": [["output", "complexity"]],
-          "verified": true,
-          "link": ""
-      }, {
-          "input": 1,
-          "output": 6,
-          "introduced_at": [""],
-          "formula": [["output", "complexity"]],
-          "verified": true,
-          "link": ""
-      }, {
-          "input": 3,
-          "output": 6,
-          "introduced_at": [""],
-          "formula": [["output", "complexity"]],
-          "verified": true,
-          "link": ""
-      }
-  ]
-}
-
-
+console.log(json);
 const problems = json["problems"];
 const reductions = json["reductions"];
 
 var nodes = new vis.DataSet();
 var edges = new vis.DataSet();
+
 for (var i = 0; i < problems.length; i++) {
   nodes.add({id: problems[i]["id"], label: problems[i]["name"]});
 }
@@ -127,3 +22,42 @@ var data = {
 };
 var options = {};
 var network = new vis.Network(container, data, options);
+
+const form1 = document.getElementById("form1");
+form1.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const p = document.getElementById("searchterm").value;
+    console.log(p);
+    nodes.update({id: 10, label: p});
+    network.redraw();
+});
+
+const tick1 = document.getElementById("tick1");
+tick1.addEventListener('change', (event) => {
+    if (event.currentTarget.checked) {
+        nodes.update({id: 11, label: "Yes"});
+        network.redraw();
+    } else {
+        nodes.update({id: 11, label: "No"});
+        network.redraw();
+    }
+})
+
+var select = document.getElementById("select");
+select.addEventListener('change', (e) => {
+    var text = select.options[select.selectedIndex].text;
+    for (var i = 0; i < problems.length; i++) { 
+        var h = false;
+        if (text === "Implementation Available") {       
+            if (problems[i]["implemented"] === false) {
+                h = true;
+            }      
+        } else if (text === "Implementation Unavailable") {       
+            if (problems[i]["implemented"] === true) {
+                h = true;
+            }     
+        }
+        data.nodes.update([{id: problems[i]["id"], hidden: h}]);
+    }
+    network.redraw();
+})

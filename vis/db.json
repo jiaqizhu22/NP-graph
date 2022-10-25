@@ -4,103 +4,162 @@
             "name": "3SAT",
             "id": "1",
             "also_known_as": ["Satisfiability with at least 3 parameters","3Sat"],
-            "introduced_at": [""],
-            "parameters" : [["u","number of variables"], ["k","number of clauses"]],
-            "algorithms": [],
-            "category": [""]
-        }, {
+            "introduced_at": ["Karp's 21 Problems"],
+            "parameters" : [["u","number of variables"],["k","number of clauses"]],
+            "algorithms": [
+                {
+                    "name": "DPLL (Davis-Putnam-Logemann-Loveland) algorithm",
+                    "description": "description/description/reference paper",
+                    "complexity": [
+                        {
+                            "formulas": "2^u",
+                            "performance": "worst-case",
+                            "resource": "time"
+                        },{
+                            "formulas": "1",
+                            "performance": "best-case",
+                            "resource": "time"
+                        },{
+                            "formulas": "u+k",
+                            "performance": "worst-case",
+                            "resource": "space"
+                        }
+                    ]
+                }
+            ],
+            "category": ["A"],
+            "implemented": true
+        },{
             "name": "Directed Hamiltonian Path",
             "id": "2",
             "also_known_as": [],
-            "introduced_at": [""],
-            "parameters" : [["",""], ["",""]],
+            "introduced_at": ["Karp's 21 Problems"],
+            "parameters" : [["n","number of vertices"],["m","number of edges"]],
             "algorithms": [],
-            "category": [""]
-        }, {
+            "category": ["B"],
+            "implemented": false
+        },{
             "name": "Vertex Cover",
             "id": "3",
             "also_known_as": ["Satisfiability"],
             "introduced_at": [""],
-            "parameters" : [["",""], ["",""]],
+            "parameters" : [["n","number of vertices"],["m","number of edges"],["k'","vertex cover upperbound"]],
             "algorithms": [],
-            "category": [""]
-        }, {
+            "category": ["C"],
+            "implemented": true
+        },{
             "name": "Clique",
             "id": "4",
             "also_known_as": ["Satisfiability"],
             "introduced_at": [""],
-            "parameters" : [["",""], ["",""]],
+            "parameters" : [["n","number of vertices"],["m","number of edges"]],
             "algorithms": [],
-            "category": [""]
-        }, {
+            "category": ["B"],
+            "implemented": false
+        },{
+            "name": "Set Packing",
+            "id": "7",
+            "also_known_as": [""],
+            "introduced_at": [""],
+            "parameters" : [["n","number of vertices"],["m","number of edges"]],
+            "algorithms": [],
+            "category": ["A"],
+            "implemented": true
+        },{
             "name": "3-Dimensional Matching",
             "id": "5",
-            "also_known_as": ["Satisfiability"],
+            "also_known_as": ["3D Matching"],
             "introduced_at": [""],
-            "parameters" : [["",""], ["",""]],
+            "parameters" : [["n","number of vertices"],["h","number of hypeedges"]],
             "algorithms": [],
-            "category": [""]
-        }, {
+            "category": ["B","C"],
+            "implemented": false
+        },{
             "name": "Undirected Hamiltonian Path",
             "id": "6",
             "also_known_as": [],
             "introduced_at": [""],
-            "parameters" : [["",""], ["",""]],
+            "parameters" : [["n'","number of vertices"],["m'","number of edges"]],
             "algorithms": [],
-            "category": [""]
+            "category": ["A","B"],
+            "implemented": false
         }
-
     ],
     "reductions": [
         {
             "input": 1,
             "output": 2,
             "introduced_at": [""],
-            "formula": [["output", "complexity"]],
+            "formulas": [
+                {
+                    "parameter": "n",
+                    "formula": "u(3k+4)+(k+1)",
+                    "bound": "exact"
+                },{
+                    "parameter": "m",
+                    "formula": "u(6k+8)+6k",
+                    "bound": "exact"
+                }
+            ],
+            "implemented": true, 
             "verified": true,
-            "link": ""
-        }, {
+            "description": ["papers"]
+        },{
             "input": 1,
             "output": 3,
             "introduced_at": [""],
-            "formula": [["output", "complexity"]],
+            "formulas": [["n=2k+3u,m=6k+u,k'=2k+u","linear"]],
+            "implemented": true, 
             "verified": true,
-            "link": ""
-        }, {
+            "description": ["papers"]
+        },{
             "input": 1,
             "output": 4,
             "introduced_at": [""],
-            "formula": [["output", "complexity"]],
+            "formulas": [["n=3k,m=9(k(k-1)/2)","complexity"]],
+            "implemented": true, 
             "verified": true,
-            "link": ""
-        }, {
+            "description": ["papers"]
+        },{
             "input": 1,
             "output": 5,
             "introduced_at": [""],
-            "formula": [["output", "complexity"]],
+            "formulas": [["Gary and Johnson Reduction","complexity"], ["Kashagra Reduction","linear"]],
+            "implemented": true, 
             "verified": true,
-            "link": ""
-        }, {
+            "description": ["papers"]
+        },{
             "input": 2,
             "output": 6,
             "introduced_at": [""],
-            "formula": [["output", "complexity"]],
+            "formulas": [["n'=3n-4,m'=m+2n-4","complexity"]],
+            "implemented": true, 
             "verified": true,
-            "link": ""
-        }, {
+            "description": ["papers"]
+        },{
             "input": 1,
             "output": 6,
             "introduced_at": [""],
-            "formula": [["output", "complexity"]],
+            "formulas": [["n'=k+2m+3,m'=16m+n(2k-1)+2","complexity"]],
+            "implemented": true, 
             "verified": true,
-            "link": ""
-        }, {
+            "description": ["papers"]
+        },{
             "input": 3,
             "output": 6,
             "introduced_at": [""],
-            "formula": [["output", "complexity"]],
+            "formulas": [["","complexity"]],
+            "implemented": true, 
             "verified": true,
-            "link": ""
+            "description": ["papers"]
+        },{
+            "input": 4,
+            "output": 7,
+            "introduced_at": [""],
+            "formulas": [["","complexity"]],
+            "implemented": true, 
+            "verified": true,
+            "description": ["papers"]
         }
     ]
 }

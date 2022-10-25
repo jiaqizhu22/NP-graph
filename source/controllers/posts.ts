@@ -1,6 +1,7 @@
 /** source/controllers/posts.ts */
 import { Request, Response, NextFunction } from 'express';
 import axios, { AxiosResponse } from 'axios';
+import TypedJsonDB, { ContentBase, Dictionary } from "ts-json-db";
 
 interface Post {
     userId: Number;
@@ -8,6 +9,47 @@ interface Post {
     title: String;
     body: String;
 }
+
+interface Problem {
+    id: Number;
+    name: String;
+    also_known_as: [String];
+    introduced_at: [String];
+    parameter: [[String, String]];
+    algorithm: [String];
+    category: [String];
+}
+
+interface Reduction {
+    input: Number;
+    output: Number;
+    introduced_at: [String];
+    formula: [[String, String]];
+    verified: Boolean;
+}
+
+interface ContentDef extends ContentBase {
+    paths: {
+        '/login': {
+            entryType: "single",
+            valueType: Login
+        },
+        '/restaurants': {
+            entryType: "array",
+            valueType: Restaurant
+        },
+        '/teams': {
+            entryType: "dictionary",
+            valueType: string
+        }
+    }
+}
+
+let db = new TypedJsonDB<ContentDef>("config.json");
+let result = db.get("/login");
+
+console.log(result);
+
 
 // getting all posts
 const getPosts = async (req: Request, res: Response, next: NextFunction) => {
