@@ -34,6 +34,53 @@
       <option selected=true>Either</option>
     </select>
     <br>
+    <label>
+      Filter nodes
+      <select id="nodeFilterSelect">
+        <option value="">All categories</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+      </select>
+    </label>
+    <br />
+    <br />
+    <label>Filter Nodes:
+      <div>
+        <label>
+          <input type="checkbox" name="nodeFilter" value="Implemented Available" checked="" />
+          Category <span style="color: green">Implementation Availble</span>
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" name="nodeFilter" value="A" checked="Implemented " />
+          Category <span style="color: purple">Implementation Unavailable</span>
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" name="nodeFilter" value="A" checked="" />
+          Category <span style="color: orange">A</span>
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" name="nodeFilter" value="B" checked="" />
+          Category <span style="color: blue">B</span>
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" name="nodeFilter" value="C" checked="" />
+          Category <span style="color: red">C</span>
+        </label>
+      </div>
+    </label>
+    
+    <br />
+    <br />
   </header>
   <body>
     <div id="mynetwork">
