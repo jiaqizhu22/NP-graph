@@ -108,7 +108,7 @@
             "introduced_at": [""],
             "parameters" : [["n","number of vertices"],["h","number of hypeedges"]],
             "algorithms": [],
-            "category": ["B","C"],
+            "category": ["C"],
             "implemented": false
         },{
             "name": "Undirected Hamiltonian Path",
@@ -117,7 +117,7 @@
             "introduced_at": [""],
             "parameters" : [["n'","number of vertices"],["m'","number of edges"]],
             "algorithms": [],
-            "category": ["A","B"],
+            "category": ["D"],
             "implemented": false
         }
     ],
