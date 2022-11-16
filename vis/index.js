@@ -29,7 +29,12 @@ for (var i = 0; i < problems.length; i++) {
 };
 
 for (var i = 0; i < reductions.length; i++) {
-    edges.add({from: reductions[i]["input"], to: reductions[i]["output"], arrows: { to: { enabled: true, type: "arrow" }}})
+    //var info = JSON.parse(JSON.stringify(reductions[i]));
+    // delete irrelavant/empty fields
+    //delete info["id"];
+    //var eg = JSON.stringify(info);
+    var eg = JSON.stringify(reductions[i]["verified"]);
+    edges.add({from: reductions[i]["input"], to: reductions[i]["output"], label: eg, arrows: { to: { enabled: true, type: "arrow" }}, dashes: !reductions[i]["verified"]})
 };
 
 /**
@@ -49,6 +54,25 @@ const nodesFilterValues2 = {
     ImplementationAUnavailable: true,
 };
 
+let edgeFilterValue = "";
+const edgesFilter = (edge) => {
+if (edgeFilterValue === "") {
+    return edge.implemented === true;
+}
+switch (edgeFilterValue) {
+    case "verified":
+    return edge.verified === true;
+    case "unverified":
+    return edge.verified === false;
+    case "implemented":
+    return edge.implemented === true;
+    case "unimplemented":
+    return edge.implemented === false;
+    default:
+    return edge.implemented === true;
+}
+};
+
 const nodesFilter = (node) => {
     return nodesFilterValues[node.category];
 };
@@ -57,10 +81,15 @@ const nodesFilter2 = (node) => {
     return nodesFilterValues2[node.implemented];
 };
 
-const nodesView = new vis.DataView(nodes, { filter: nodesFilter, nodesFilter2 });
-const edgesView = new vis.DataView(edges);
-
-
+const nodesView = new vis.DataView(nodes, { filter: nodesFilter });
+const edgesView = new vis.DataView(edges );
+/*
+edgeFilterSelector.addEventListener("change", (e) => {
+    // set new value to filter variable
+    edgeFilterValue = e.target.value;
+    edgesView.refresh();
+});
+*/
 nodeFilters.forEach((filter) => filter.addEventListener("change", (e) => {
     const { value, checked } = e.target;
     if (value in nodesFilterValues) {
@@ -72,4 +101,16 @@ nodeFilters.forEach((filter) => filter.addEventListener("change", (e) => {
 }));
 
 startNetwork({ nodes: nodesView, edges: edgesView });
+
+const search = document.getElementById("searchterm");
+document.getElementById("form1").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const term = search.value;
+    console.log(term);
+    for (var i = 0; i < problems.length; i++) {
+        if (problems[i]["name"] === term) {
+            document.getElementById("boxtext").innerHTML = JSON.stringify(problems[i]);
+        }  
+    }
+});
   

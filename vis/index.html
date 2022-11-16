@@ -23,7 +23,16 @@
         <input type="submit" value="Submit">
       </form> 
     </div>
-
+    <label>
+      Filter edges: 
+      <select id="edgeFilterSelect">
+        <option value="">All</option>
+        <option value="verified">verified</option>
+        <option value="unverified">unverified</option>
+        <option value="implemented">implemented</option>
+        <option value="unimplemented">unimplemented</option>
+      </select>
+    </label>
     <label>Filter Nodes: </label>
       <div style="display: flex; flex-direction: row;">
         <div style="order: 1;">
@@ -67,8 +76,13 @@
       </div>
     <br />
   </header>
-  <body>
+  <body style="display: flex; flex-wrap: wrap;">
     <div id="mynetwork">
+      <script type="module" src="./index.js"></script>
+    </div>
+    <br />
+    <div id="box1">
+      <p id="boxtext"> test box </p>
       <script type="module" src="./index.js"></script>
     </div>
   </body>

@@ -119,6 +119,15 @@
             "algorithms": [],
             "category": ["D"],
             "implemented": false
+        }, {
+            "name": "Random test node",
+            "id": "8",
+            "also_known_as": [],
+            "introduced_at": [""],
+            "parameters" : [["n'","number of vertices"],["m'","number of edges"]],
+            "algorithms": [],
+            "category": ["D"],
+            "implemented": false
         }
     ],
     "reductions": [
@@ -138,7 +147,7 @@
                 }
             ],
             "implemented": true, 
-            "verified": true,
+            "verified": false,
             "description": ["Gary and Johnson Reduction"]
         },{
             "input": 1,
@@ -215,9 +224,17 @@
             "output": 7,
             "introduced_at": [""],
             "formulas": [],
-            "implemented": true, 
+            "implemented": false, 
             "verified": true,
             "description": ["papers"]
+        }, {
+            "input": 1,
+            "output": 8,
+            "introduced_at": [""],
+            "formulas": [],
+            "implemented": false, 
+            "verified": false,
+            "description": ["papers"]   
         }
     ]
 }
