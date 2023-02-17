@@ -8,7 +8,11 @@ Frontend: React, Vis.js
 ## Backend Commands
 $ mkdir my_project && cd my_project
 $ virtualenv project_env
-$ source project-env/bin/activate
+
+Start virtual env:
+$ source project_env/bin/activate
+or 
+$  . project_env/bin/activate
 (project_env) $ pip install fastapi uvicorn[standard]
 
 $ uvicorn main:app --reload
