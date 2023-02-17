@@ -1,4 +1,6 @@
-import json from "./db.json" assert { type: "json" };
+import file from './db.json' assert {type: 'json'};
+
+console.log(file)
 
 const nodeFilters = document.getElementsByName("nodeFilter");
 
@@ -8,8 +10,8 @@ function startNetwork(data) {
     new vis.Network(container, data, options);
 };
 
-const problems = json["problems"];
-const reductions = json["reductions"];
+const problems = file["problems"];
+const reductions = file["reductions"];
 
 var nodes = new vis.DataSet();
 var edges = new vis.DataSet();
@@ -76,11 +78,11 @@ switch (edgeFilterValue) {
 const nodesFilter = (node) => {
     return nodesFilterValues[node.category];
 };
-
+/*
 const nodesFilter2 = (node) => {
     return nodesFilterValues2[node.implemented];
 };
-
+*/
 const nodesView = new vis.DataView(nodes, { filter: nodesFilter });
 const edgesView = new vis.DataView(edges );
 /*
@@ -107,10 +109,15 @@ document.getElementById("form1").addEventListener("submit", (e) => {
     e.preventDefault();
     const term = search.value;
     console.log(term);
+    var checked = 0
     for (var i = 0; i < problems.length; i++) {
         if (problems[i]["name"] === term) {
             document.getElementById("boxtext").innerHTML = JSON.stringify(problems[i]);
+            checked = 1
         }  
+    }
+    if (checked === 0) {
+        document.getElementById("boxtext").innerHTML = "Search Result";
     }
 });
   
