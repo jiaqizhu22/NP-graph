@@ -1,10 +1,7 @@
 import file from './db2.json' assert {type: 'json'};
 
-function startNetwork(data) {
-    const container = document.getElementById("mynetwork");
-    const options = {};
-    new vis.Network(container, data, options);
-};
+const container = document.getElementById("mynetwork");
+const options = {};
 
 const problems = file["problems"];
 const reductions = file["reductions"];
@@ -31,4 +28,35 @@ for (var i = 0; i < reductions.length; i++) {
 const nodesView = new vis.DataView( nodes );
 const edgesView = new vis.DataView( edges );
 
-startNetwork({ nodes: nodesView, edges: edgesView });
+var network = new vis.Network(container, { nodes: nodesView, edges: edgesView }, options);
+
+// Search problem by exact name and highlight node
+const search = document.getElementById("searchterm");
+document.getElementById("form1").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const term = search.value.toLowerCase();
+
+    const result = nodes.get({
+        filter: function (item) {
+            return (item.label.toLowerCase() == term);
+        }
+    });
+
+    if (result[0] == undefined) {
+        network.unselectAll();
+    } else {
+        const nodeId = result[0].id;
+
+        var mySelection = {
+            nodes: [nodeId], 
+            edges: []
+        };
+        
+        var myOptions = {
+            highlightEdges: false
+        };
+        network.setSelection(mySelection, myOptions);
+    }
+    
+});
+
