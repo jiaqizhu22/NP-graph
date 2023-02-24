@@ -1,0 +1,396 @@
+{
+    "problems": [
+        {
+            "id": "1",
+            "name": "SAT",
+            "also_known_as": ["Satisfiability"],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["A"],
+            "implemented": true
+        },
+        {
+            "id": "2",
+            "name": "Clique",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["A"],
+            "implemented": true
+        },
+        {
+            "id": "3",
+            "name": "0-1 Integer Programming",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["A"],
+            "implemented": true
+        },
+        {
+            "id": "4",
+            "name": "3SAT",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["A"],
+            "implemented": true
+        },
+        {
+            "id": "5",
+            "name": "Node Cover",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["B"],
+            "implemented": true
+        }, 
+        {
+            "id": "6",
+            "name": "Set Packing",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["B"],
+            "implemented": true
+        }, 
+        {
+            "id": "7",
+            "name": "Chromatic Number",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["B"],
+            "implemented": true
+        }, 
+        {
+            "id": "8",
+            "name": "Feedback Node Set",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["C"],
+            "implemented": true
+        },
+        {
+            "id": "9",
+            "name": "Feedback Arc Set",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["C"],
+            "implemented": true
+        },
+        {
+            "id": "10",
+            "name": "Directed Hamilton Circuit",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["C"],
+            "implemented": true
+        },
+        {
+            "id": "11",
+            "name": "Set Covering",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["C"],
+            "implemented": true
+        },
+        {
+            "id": "12",
+            "name": "Exact Cover",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["C"],
+            "implemented": true
+        },
+        {
+            "id": "13",
+            "name": "Clique Cover",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["C"],
+            "implemented": true
+        },
+        {
+            "id": "14",
+            "name": "Undirected Hamilton Circuit",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["D"],
+            "implemented": true
+        },
+        {
+            "id": "15",
+            "name": "3-Dimensional Matching",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["D"],
+            "implemented": true
+        },
+        {
+            "id": "16",
+            "name": "Knapsack",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["D"],
+            "implemented": true
+        },
+        {
+            "id": "17",
+            "name": "Hitting Set",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["D"],
+            "implemented": true
+        },
+        {
+            "id": "18",
+            "name": "Steiner Tree",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["D"],
+            "implemented": true
+        },
+        {
+            "id": "19",
+            "name": "Sequencing",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["E"],
+            "implemented": true
+        },
+        {
+            "id": "20",
+            "name": "Partition",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["E"],
+            "implemented": true
+        },
+        {
+            "id": "21",
+            "name": "Max Cut",
+            "also_known_as": [],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["F"],
+            "implemented": true
+        }
+    ],
+    "reductions" : [
+        {
+            "input": 1,
+            "output": 2,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 1,
+            "output": 3,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 1,
+            "output": 4,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 2,
+            "output": 5,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 2,
+            "output": 6,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 4,
+            "output": 7,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 7,
+            "output": 12,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 7,
+            "output": 13,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 5,
+            "output": 8,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        }, 
+        {
+            "input": 5,
+            "output": 9,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 5,
+            "output": 10,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 5,
+            "output": 11,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 10,
+            "output": 14,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 12,
+            "output": 15,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 12,
+            "output": 16,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 12,
+            "output": 17,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 12,
+            "output": 18,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 16,
+            "output": 19,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 16,
+            "output": 20,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 20,
+            "output": 21,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+    <title>NP Graph</title>
+    <meta name="description" content="A dynamic graph for NP-Complete problems">
+    <meta name="keywords" content="html graph np-complete problems">
+
+    <script
+        type="text/javascript"
+        src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"
+    ></script>
+
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <header id="myheader">
+        <h1>Graph of NP-Complete Problems</h1>
+        <form id="form1">
+            <label for="searchterm">Find Problem: </label>
+            <input type="text" id="searchterm" name="searchterm">
+            <input type="submit" value="Submit">
+        </form> 
+    </header>
+    <body id="mybody">
+        <div id="mynetwork">
+            <script type="module" src="./graph.js"></script>
+        </div>
+    </body>
+</html>

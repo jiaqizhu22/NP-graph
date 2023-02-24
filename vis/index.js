@@ -102,7 +102,7 @@ nodeFilters.forEach((filter) => filter.addEventListener("change", (e) => {
     nodesView.refresh();
 }));
 
-startNetwork({ nodes: nodesView, edges: edgesView });
+
 
 const search = document.getElementById("searchterm");
 document.getElementById("form1").addEventListener("submit", (e) => {
@@ -120,4 +120,5 @@ document.getElementById("form1").addEventListener("submit", (e) => {
         document.getElementById("boxtext").innerHTML = "Search Result";
     }
 });
-  
+
+startNetwork({ nodes: nodesView, edges: edgesView });

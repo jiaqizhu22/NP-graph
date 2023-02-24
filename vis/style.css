@@ -1,0 +1,21 @@
+#mynetwork {
+    width: 1000px;
+    height: 800px;
+    border: 1px solid lightgray;
+}
+
+#myheader {
+    top: 0;
+    width: 100%; /** Use 100% to fill the width of the page **/
+    position: relative;
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+#mybody {
+    margin: auto;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

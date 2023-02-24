@@ -9,7 +9,7 @@
     <style type="text/css">
       #mynetwork {
         width: 1000px;
-        height: 600px;
+        height: 800px;
         border: 1px solid lightgray;
       }
     </style>
@@ -22,17 +22,18 @@
         <input type="text" id="searchterm" name="searchterm">
         <input type="submit" value="Submit">
       </form> 
+      <label>
+        Filter edges: 
+        <select id="edgeFilterSelect">
+          <option value="">All</option>
+          <option value="verified">verified</option>
+          <option value="unverified">unverified</option>
+          <option value="implemented">implemented</option>
+          <option value="unimplemented">unimplemented</option>
+        </select>
+      </label>
     </div>
-    <label>
-      Filter edges: 
-      <select id="edgeFilterSelect">
-        <option value="">All</option>
-        <option value="verified">verified</option>
-        <option value="unverified">unverified</option>
-        <option value="implemented">implemented</option>
-        <option value="unimplemented">unimplemented</option>
-      </select>
-    </label>
+    
     <label>Filter Nodes: </label>
       <div style="display: flex; flex-direction: row;">
         <div style="order: 1;">
