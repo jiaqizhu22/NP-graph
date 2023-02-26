@@ -1,5 +1,7 @@
 import file from './db2.json' assert {type: 'json'};
 
+const nodeCheckBoxes = document.getElementsByName("nodeFilter");
+
 const container = document.getElementById("mynetwork");
 const options = {};
 
@@ -14,7 +16,7 @@ for (var i = 0; i < problems.length; i++) {
     var node = JSON.parse(JSON.stringify(problems[i]));
     var node_info = JSON.stringify(node);
 
-    nodes.add({id: problems[i]["id"], label: problems[i]["name"], category: problems[i]["category"], title: node_info}); 
+    nodes.add({id: problems[i]["id"], label: problems[i]["name"], category: problems[i]["category"][0], title: node_info}); 
 };
 
 // Add new reductions as edges
@@ -25,8 +27,33 @@ for (var i = 0; i < reductions.length; i++) {
     edges.add({from: reductions[i]["input"], to: reductions[i]["output"], title: edge_info, arrows: { to: { enabled: true, type: "arrow" }}, dashes: !reductions[i]["verified"]})
 };
 
-const nodesView = new vis.DataView( nodes );
+const nodesFilterValues = {
+    A: true,
+    B: true,
+    C: true,
+    D: true,
+    E: true,
+    F: true,
+};
+
+const nodesFilter = (node) => {
+    return nodesFilterValues[node.category];
+};
+
+const nodesView = new vis.DataView( nodes, { filter: nodesFilter} );
 const edgesView = new vis.DataView( edges );
+
+nodeCheckBoxes.forEach((checkbox) => checkbox.addEventListener("change", (e) => {
+    const { value, checked } = e.target;
+
+    if (value in nodesFilterValues) {
+        nodesFilterValues[value] = checked;
+    }
+
+    nodesView.refresh();
+}));
+
+
 
 var network = new vis.Network(container, { nodes: nodesView, edges: edgesView }, options);
 
@@ -41,6 +68,7 @@ document.getElementById("form1").addEventListener("submit", (e) => {
             return (item.label.toLowerCase() == term);
         }
     });
+    console.log(result[0]);
 
     if (result[0] == undefined) {
         network.unselectAll();
