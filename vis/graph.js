@@ -8,6 +8,7 @@ const options = {};
 const problems = file["problems"];
 const reductions = file["reductions"];
 
+//var render = function(problems, reductions) 
 var nodes = new vis.DataSet();
 var edges = new vis.DataSet();
 
@@ -58,18 +59,69 @@ nodeCheckBoxes.forEach((checkbox) => checkbox.addEventListener("change", (e) => 
 var network = new vis.Network(container, { nodes: nodesView, edges: edgesView }, options);
 
 // Search problem by exact name and highlight node
-const search = document.getElementById("searchterm");
+// const search = document.getElementById("searchterm");
+
+var handleSearch = function(event) {
+    event.preventDefault();
+    var searchTerm = event.target.elements['search'].value;
+    var tokens = searchTerm
+                  .toLowerCase()
+                  .split(' ')
+                  .filter(function(token){
+                    return token.trim() !== '';
+                  });
+
+    if (tokens.length) {
+        var searchTermRegex = new RegExp(tokens.join('|'), 'gim');
+        var filteredListNodes = problems.filter(function(p){
+            var s = '';
+            for (var key in p) {
+                if (p.hasOwnProperty(key) && p[key] != []) {
+                    s += p[key].toString().toLowerCase().trim() + ' ';
+                }
+            }
+            return s.match(searchTermRegex);
+        });
+        var filteredListEdges = reductions.filter(function(p){
+            var s = '';
+            for (var key in p) {
+                if (p.hasOwnProperty(key) && p[key] != []) {
+                    s += p[key].toString().toLowerCase().trim() + ' ';
+                }
+            }
+            return s.match(searchTermRegex);
+        });
+        console.log(filteredListNodes);
+        console.log(filteredListEdges);
+    }
+}
+document.addEventListener('submit', handleSearch);
+/*
 document.getElementById("form1").addEventListener("submit", (e) => {
     e.preventDefault();
     const term = search.value.toLowerCase();
-
+    const words = term.split(' ');
+    console.log(words);
+    let matched_problems = []; 
+    for (var i = 0; i < problems.length; i++) {
+        for (var j = 0; j < words.length; j++) {
+            const regex = new RegExp(words[j]);
+            if (regex.test(problems[i]["name"]) === true) {
+                console.log(problems[i]);
+            }
+        }    
+    }
+    
+    
     const result = nodes.get({
         filter: function (item) {
             return (item.label.toLowerCase() == term);
         }
     });
-    console.log(result[0]);
+    
+    // console.log(result[0]);
 
+    
     if (result[0] == undefined) {
         network.unselectAll();
     } else {
@@ -87,4 +139,4 @@ document.getElementById("form1").addEventListener("submit", (e) => {
     }
     
 });
-
+*/

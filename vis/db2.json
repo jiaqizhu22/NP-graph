@@ -6,7 +6,7 @@
             "also_known_as": ["Satisfiability"],
             "introduced_at": [],
             "parameters" : [],
-            "algorithms": [],
+            "algorithms": ["Clique"],
             "category": ["A"],
             "implemented": true
         },
