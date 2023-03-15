@@ -85,7 +85,7 @@ searchButton.addEventListener("click", function(event) {
     }
     // Highlight matching nodes and their edges
     let matchingNodeIds = matchingNodes.getIds();
-    network.selectNodes(matchingNodeIds);
+    network.selectNodes(matchingNodeIds, false);
     
 });
 
@@ -169,6 +169,26 @@ function dijkstra(startNodeId, endNodeId, nodes, edges) {
     //let res = path.map(findNodeById);
     return path;
 }
+
+function getEdgesFromPath(path) {
+    let edges = [];
+
+    for (let i = 0; i < path.length - 1; i++) {
+        let node1 = path[i];
+        let node2 = path[i + 1];
+    
+        let connectedEdges = network.getConnectedEdges(node1);
+        for (let edge of connectedEdges) {
+            let edgeData = data.edges.get(edge);
+            if (edgeData.from == node1 && edgeData.to == node2) {
+                edges.push(edgeData.id);
+                break;
+            }
+        }
+    }
+    return edges;
+}
+
   
 findPathButton.addEventListener("click", function(event) {
     event.preventDefault();
@@ -180,9 +200,8 @@ findPathButton.addEventListener("click", function(event) {
     let edges = data.edges.get();
 
     let path = dijkstra(startNodeId, endNodeId, nodes, edges);
-    network.selectEdges(network.getConnectedEdges(1));
-
-    console.log(path);
+    let edges_need_highlight = getEdgesFromPath(path);
+    network.selectEdges(edges_need_highlight);
 });
 
 
