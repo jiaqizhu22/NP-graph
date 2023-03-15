@@ -215,6 +215,7 @@
         {
             "input": 1,
             "output": 2,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -224,6 +225,7 @@
         {
             "input": 1,
             "output": 3,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -233,6 +235,7 @@
         {
             "input": 1,
             "output": 4,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -242,6 +245,7 @@
         {
             "input": 2,
             "output": 5,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -251,6 +255,7 @@
         {
             "input": 2,
             "output": 6,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -260,6 +265,7 @@
         {
             "input": 4,
             "output": 7,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -269,6 +275,7 @@
         {
             "input": 7,
             "output": 12,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -278,6 +285,7 @@
         {
             "input": 7,
             "output": 13,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -287,6 +295,7 @@
         {
             "input": 5,
             "output": 8,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -296,6 +305,7 @@
         {
             "input": 5,
             "output": 9,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -305,6 +315,7 @@
         {
             "input": 5,
             "output": 10,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -314,6 +325,7 @@
         {
             "input": 5,
             "output": 11,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -323,6 +335,7 @@
         {
             "input": 10,
             "output": 14,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -332,6 +345,7 @@
         {
             "input": 12,
             "output": 15,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -341,6 +355,7 @@
         {
             "input": 12,
             "output": 16,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -350,6 +365,7 @@
         {
             "input": 12,
             "output": 17,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -359,6 +375,7 @@
         {
             "input": 12,
             "output": 18,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -368,6 +385,7 @@
         {
             "input": 16,
             "output": 19,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -377,6 +395,7 @@
         {
             "input": 16,
             "output": 20,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
@@ -386,6 +405,7 @@
         {
             "input": 20,
             "output": 21,
+            "weight": 1,
             "introduced_at": [],
             "formulas": [],
             "implemented": false, 
