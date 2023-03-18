@@ -1,10 +1,14 @@
 import file from './db2.json' assert {type: 'json'};
 
 //const nodeCheckBoxes = document.getElementsByName("nodeFilter");
+
+const displayResult = document.getElementById("myresult");
+
 const problems = file["problems"];
 const reductions = file["reductions"];
 var nodes = new vis.DataSet();
 var edges = new vis.DataSet();
+
 // Add nodes
 for (var i = 0; i < problems.length; i++) {
     var node = JSON.parse(JSON.stringify(problems[i]));
@@ -15,7 +19,7 @@ for (var i = 0; i < problems.length; i++) {
 for (var i = 0; i < reductions.length; i++) {
     var edge = JSON.parse(JSON.stringify(reductions[i]));
     var edge_info = JSON.stringify(edge);
-    edges.add({from: reductions[i]["input"], to: reductions[i]["output"], weight: reductions[i]["weight"], title: edge_info, arrows: { to: { enabled: true, type: "arrow" }}, dashes: !reductions[i]["verified"]})
+    edges.add({from: reductions[i]["input"], to: reductions[i]["output"], weight: reductions[i]["weight"], title: edge_info, arrows: { to: { enabled: true, type: "arrow" }}, dashes: !reductions[i]["implemented"]});
 }
 
 // Create network
@@ -30,25 +34,32 @@ const options = {
         shape: "circle",
         color: {
           border: "#2B7CE9", // default color for unselected nodes
-          background: "#97C2FC" // default color for unselected nodes
+          background: "#97C2FC", // default color for unselected nodes
         },
         font: {
           color: "#343434"
         },
         scaling: {
           min: 10,
-          max: 30
+          max: 30,
         },
         labelHighlightBold: true
     },
     edges: {
-        color: "#2B7CE9"
+        color: {
+            color: "#97C2FC", 
+            highlight: "green",
+            hover: "cyan",
+            opacity: 0.9,
+        },
+        selectionWidth: 4.5,
     },
     interaction: {
         hover: true,
         tooltipDelay: 0,
         zoomView: true,
-        dragView: false
+        dragView: false,
+        multiselect: true,
     },
     physics: {
         enabled: true
@@ -83,10 +94,14 @@ searchButton.addEventListener("click", function(event) {
             }
         }
     }
-    // Highlight matching nodes and their edges
+    
+
+    // Highlight matching nodes
     let matchingNodeIds = matchingNodes.getIds();
     network.selectNodes(matchingNodeIds, false);
-    
+
+    let matchingNodeData = problems.filter(p => matchingNodeIds.includes(p["id"]));
+    displayResult.innerHTML = JSON.stringify(matchingNodeData);
 });
 
 let findPathButton = document.getElementById("find-path");
@@ -114,7 +129,7 @@ function findNodeById(id) {
 function getConnectedEdgesByNode(id, edges) {
     let res = [];
     for (let i = 0; i < edges.length; i++) {
-        if (edges[i].from == id) {
+        if (edges[i].from == id && edges[i]["dashes"] === false) {
             res.push(edges[i]);
         }
     }
@@ -200,6 +215,7 @@ findPathButton.addEventListener("click", function(event) {
     let edges = data.edges.get();
 
     let path = dijkstra(startNodeId, endNodeId, nodes, edges);
+    
     let edges_need_highlight = getEdgesFromPath(path);
     network.selectEdges(edges_need_highlight);
 });

@@ -145,3 +145,117 @@ document.addEventListener('reset', function(event){
     event.preventDefault();
     render(books);
 })
+
+var data = [
+  {
+    "src": "A",
+    "dst": "B",
+    "weight": [1,1,1]
+  },
+  {
+    "src": "B",
+    "dst": "C",
+    "weight": [1,2,1]
+  },
+  {
+    "src": "C",
+    "dst": "D",
+    "weight": [1,1,2]
+  },
+  {
+    "src": "D",
+    "dst": "G",
+    "weight": [1,1,1]
+  },
+  {
+    "src": "A",
+    "dst": "E",
+    "weight": [2,2,1]
+  },
+  {
+    "src": "A",
+    "dst": "F",
+    "weight": [2,1,1]
+  },
+  {
+    "src": "E",
+    "dst": "D",
+    "weight": [2,2,1]
+  },
+  {
+    "src": "F",
+    "dst": "D",
+    "weight": [2,1,1]
+  }
+];
+
+let nodes = ["A", "B", "C", "D", "E", "F", "G"];
+
+// Test function for finding path between 2 nodes
+function calculate() {
+  var node1 = "A";
+  var node2 = "G";
+
+  let distances = {
+    "A": [[0,0,0]],
+    "B": [],
+    "C": [],
+    "D": [],
+    "E": [],
+    "F": [],
+    "G": []
+  };
+
+  let queue = [];
+  queue.push("A");
+  while (queue.length > 0) {
+    let src = queue.shift();
+    let connectedEdges = data.filter((e) => e["src"] === src);
+
+    for (let e of connectedEdges) {
+      let dst = e["dst"];
+      let w = e["weight"];
+      
+      // no new path yet
+      if (distances[dst].length === 0) {
+        distances[dst].push(w);
+        console.log("I pushed new distance:", w);
+      } else {
+        let new_path = distances[src][0];
+        console.log(new_path);
+        for (let i = 0; i <= 2; i++) {
+          new_path[i] += w[i];
+        }
+        console.log("I found new path: ", new_path);
+        // is this path shorter than the previous one?
+        
+        let shorter = true;
+        for (let p of distances[dst]) {
+          // compare new_path with p, if new_path is less than p, remove p
+
+          // if p is smaller than new_path, shorter <- false; break
+
+        }
+        // if shorter then add p to the list
+        // 
+
+        for (let i = 0; i <= 2; i++) {
+          if (new_path[i] <= distances[dst][0][i]) {
+          }
+        }
+        if (shorter) {
+          distances[dst][0] = new_path;
+        }
+      }
+      if (!queue.includes(dst)) {
+        queue.push(dst);
+        console.log(dst);
+      }
+    }
+  }
+
+  console.log(queue);
+  console.log(distances);
+}
+
+calculate();

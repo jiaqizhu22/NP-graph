@@ -218,7 +218,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -228,7 +228,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -238,7 +238,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -248,7 +248,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -258,7 +258,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -268,7 +268,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -278,7 +278,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -288,7 +288,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -298,7 +298,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         }, 
@@ -308,7 +308,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -318,7 +318,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -328,7 +328,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -338,7 +338,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -348,7 +348,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -358,7 +358,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -368,7 +368,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -378,7 +378,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -388,7 +388,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -398,7 +398,7 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
             "description": []   
         },
@@ -408,8 +408,28 @@
             "weight": 1,
             "introduced_at": [],
             "formulas": [],
-            "implemented": false, 
+            "implemented": true, 
             "verified": true,
+            "description": []   
+        },
+        {
+            "input": 11,
+            "output": 14,
+            "weight": 1,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": false,
+            "description": []   
+        },
+        {
+            "input": 16,
+            "output": 21,
+            "weight": 1,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": false,
             "description": []   
         }
     ]

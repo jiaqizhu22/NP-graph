@@ -1,7 +1,7 @@
 #mynetwork {
-    width: 1000px;
-    height: 800px;
-    border: 1px solid lightgray;
+    width: 60vw;
+    height: 80vh;
+    border: 1px solid lightslategrey;
 }
 
 #myheader {
@@ -12,10 +12,36 @@
     padding-bottom: 25px;
 }
 
-#mybody {
-    margin: auto;
-    padding: 25px;
+#myresult {
+    width: 500px;
+    margin: 2%;
+}
+
+.wrapper {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin: 1.5%;
+}
+
+.wrapper > * {
+    flex: 1 100%;
+}
+
+/* Medium screens */
+@media all and (min-width: 600px) {
+    /* We tell both sidebars to share a row */
+    .aside { flex: 1 auto; }
+}
+
+/* Large screens */
+@media all and (min-width: 800px) {
+/* We invert order of first sidebar and main
+    * And tell the main element to take twice as much width as the other two sidebars 
+    */
+    .main { flex: 3 0px; }
+    .aside-1 { order: 1; }
+    .main    { order: 2; }
+    .aside-2 { order: 3; }
+    .footer  { order: 4; }
 }
