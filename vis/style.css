@@ -1,31 +1,56 @@
 #mynetwork {
-    width: 60vw;
-    height: 80vh;
+    width: 65vw;
+    height: 85vh;
     border: 1px solid lightslategrey;
 }
 
-#myheader {
-    top: 0;
+.header {
     width: 100%; /** Use 100% to fill the width of the page **/
-    position: relative;
+    position: sticky;
     text-align: center;
-    padding-bottom: 25px;
+    padding: 0%;
+    margin: 0%;
 }
 
 #myresult {
-    width: 500px;
-    margin: 2%;
+    width: inherit;
 }
 
 .wrapper {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
-    margin: 1.5%;
+    justify-content: space-evenly;
+    margin: 1%;
 }
 
 .wrapper > * {
     flex: 1 100%;
+}
+
+.search-field-container {
+    display: inline-flex;
+    flex-flow: column nowrap;
+    justify-content: left space-evenly;
+    padding: 0%;
+    margin: 0%;
+}
+
+.search-field {
+    flex: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.footer {
+    width: 100%;
+}
+
+.result-field {
+    border: 1px burlywood solid;
+    padding: 1%;
+    margin: 1%;
+    font-size: small;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Medium screens */
@@ -40,8 +65,15 @@
     * And tell the main element to take twice as much width as the other two sidebars 
     */
     .main { flex: 3 0px; }
-    .aside-1 { order: 1; }
+    .aside-1 { 
+        flex: 1;
+        order: 1; 
+        width: 30vw;
+    }
     .main    { order: 2; }
     .aside-2 { order: 3; }
-    .footer  { order: 4; }
+    .footer { 
+        order: 4;
+        width: 100%;
+    }
 }

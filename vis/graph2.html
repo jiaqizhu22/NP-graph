@@ -10,97 +10,84 @@
         ></script>
         <link rel="stylesheet" href="./style.css">
     </head>
+    <header class="header">
+        <h1>Graph of NP-Complete Problems</h1>
+    </header> 
 
-    <div class="wrapper">
-        <header class="header" id="myheader">
-            <h1>Graph of NP-Complete Problems</h1>
-    
-        </header>
-
-        <body>
-            <aside class="aside aside-1">
-                <div>
-                    <label for="search-input"> Find Problem: </label>
-                    <input type="text" id="search-input">
-                    <button id="search-btn">Search</button>
-                </div> 
-                <br/>
-                <div>
-                    <label for="from-node">From: </label>
-                    <input type="text" id="from-node">
-                    <label for="to-node">To: </label>
-                    <input type="text" id="to-node">
-                    <button id="find-path">Find Path</button>
-                </div> 
-                <br/>
-                <label>Filter Nodes by Category: </label>
-                <div>
-                    <div>
-                        <label>
-                            <input type="checkbox" name="nodeFilter" value="A" checked="" />
-                            Category <span style="color: red">A</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="checkbox" name="nodeFilter" value="B" checked="" />
-                            Category <span style="color: orangered">B</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="checkbox" name="nodeFilter" value="C" checked="" />
-                            Category <span style="color: orange">C</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="checkbox" name="nodeFilter" value="D" checked="" />
-                            Category <span style="color: yellow">D</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="checkbox" name="nodeFilter" value="E" checked="" />
-                            Category <span style="color: yellowgreen">E</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="checkbox" name="nodeFilter" value="F" checked="" />
-                            Category <span style="color: lime">F</span>
-                        </label>
-                    </div>
-                </div>
-                
-                <div id="myresult">
-                    
-                </div>
-            </aside>
-
-            <div class="main">
-                <div id="mynetwork">
-                    <script type="module" src="./graph2.js"></script>
-                </div>
+    <body class="wrapper">
+        
+        <aside class="aside aside-1 search-field-container">
+            <div class="search-field">
+                <label for="problem-name">Problem Name: </label>
+                <input type="text" id="problem-name" placeholder="search by problem name or key words" size="40" value="">
             </div>
-    
-            <aside class="aside aside-2">
-                <label>Calculate Path Weight - </label>
-                <label>Input:</label>
-                <input type="text" id="input-set">
-            </aside>
-    
-            
-        </body>
+            <div class="search-field">
+                <label for="paper-name">Paper Title: </label>
+                <input type="text" id="paper-name" placeholder="search by research paper title" size="30" value="">
+            </div>
+            <div class="search-field">
+                <label for="author-name">Author Name: </label>
+                <input type="text" id="author-name" placeholder="search by author name" size="30" value="">
+            </div>
+            <div class="search-field">
+                <label for="algorithms">Algorithms: </label>
+                <input type="text" id="algorithms" placeholder="search by algorithm name" size="30" value="">
+            </div>
+            <div class="search-field">
+                <label for="from-date">From Date: </label>
+                <input type="date" id="from-date" value="">
+                <label for="to-date">To Date: </label>
+                <input type="date" id="to-date" value="">
+            </div>
+            <div class="search-field">
+                <label for="categories">Categories: </label>
+                <input type="text" id="categories" placeholder="search by categories" size="30" value="">
+            </div>
+            <div class="search-field">
+                <label for="implemented">Is Implemented: </label>
+                <select id="implemented">
+                    <option [ngValue]="true">True</option>
+                    <option [ngValue]="false" selected>False</option>
+                </select>
+            </div>
+            <div class="search-field">
+                <label for="verified">Is Verified: </label>
+                <select id="verified">
+                    <option [ngValue]="true">True</option>
+                    <option [ngValue]="false" selected>False</option>
+                </select>
+            </div>
+            <div class="search-field">
+                <button id="search-button">Search for nodes</button>
+            </div> 
 
-        <foote class="footer">
-            <p>Developer: Jiaqi Zhu</p>
-            <p>GitHub Repo Link: <a href="https://github.com/jiaqizhu22/NP-graph">NP-graph</a></p>
-            <p>Contact me: <a href="mailto:jiaqi.zhu@student.unsw.edu.au">jiaqi.zhu@student.unsw.edu.au</a></p>
-        </footer>
-    </div>
+            <div class="search-field">
+                <label for="from-node">From node: </label>
+                <input type="text" id="from-node" placeholder="enter problem name" size="35">
+            </div>
+            <div class="search-field">
+                <label for="to-node">To node: </label>
+                <input type="text" id="to-node" placeholder="enter problem name" size="35">
+            </div> 
+            <div class="search-field">
+                <button id="find-path">Find path</button>
+                <button id="find-path-weight">Calculate path weight</button>
+            </div>
+            <div class="search-field" id="myresult">
+                
+            </div>
+        </aside>
 
-    
-    
-    
+        <div class="main">
+            <div id="mynetwork">
+                <script type="module" src="./graph2.js"></script>
+            </div>
+        </div>            
+    </body>
+
+    <foote class="footer">
+        <p>Developer: Jiaqi Zhu</p>
+        <p>GitHub Repo Link: <a href="https://github.com/jiaqizhu22/NP-graph">NP-graph</a></p>
+        <p>Contact me: <a href="mailto:jiaqi.zhu@student.unsw.edu.au">jiaqi.zhu@student.unsw.edu.au</a></p>
+    </footer>
 </html>

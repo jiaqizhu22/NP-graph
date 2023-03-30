@@ -219,33 +219,51 @@ function calculate() {
       // no new path yet
       if (distances[dst].length === 0) {
         distances[dst].push(w);
-        console.log("I pushed new distance:", w);
+        // console.log("I pushed new distance:", w);
       } else {
         let new_path = distances[src][0];
-        console.log(new_path);
+        // console.log(new_path);
         for (let i = 0; i <= 2; i++) {
           new_path[i] += w[i];
         }
-        console.log("I found new path: ", new_path);
+        // console.log("I found new path: ", new_path);
         // is this path shorter than the previous one?
         
         let shorter = true;
+        let remove_list = [];
         for (let p of distances[dst]) {
-          // compare new_path with p, if new_path is less than p, remove p
-
-          // if p is smaller than new_path, shorter <- false; break
-
-        }
-        // if shorter then add p to the list
-        // 
-
-        for (let i = 0; i <= 2; i++) {
-          if (new_path[i] <= distances[dst][0][i]) {
+          // compare new_path with p
+          let res = [];
+          for (let i = 0; i <= new_path.length; i++) {
+            if (new_path[i] < p[i]) {
+              res.push(-1);
+            } else if (new_path[i] > p[i]) {
+              res.push(1);
+            } else {
+              res.push(0);
+            }
+          }
+          // if new_path is less than p, remove p
+          if (res.filter(x => x === -1).length === res.length) {
+            remove_list.push(p);
+          } else if (res.filter(x => x === 1).length === res.length) {
+            // if p is smaller than new_path, shorter <- false; break
+            shorter = false;
+            break;
           }
         }
-        if (shorter) {
-          distances[dst][0] = new_path;
+        // remove long paths
+        const remove_set = new Set(remove_list);
+        let new_paths = distances[dst].filter((p) => {
+          // return those elements not in the namesToDeleteSet
+          return !remove_set.has(p);
+        });
+        
+        // if shorter then add p to the list
+        if (shorter === true) {
+          new_paths.push(new_path);
         }
+        distances[dst] = new_paths;
       }
       if (!queue.includes(dst)) {
         queue.push(dst);

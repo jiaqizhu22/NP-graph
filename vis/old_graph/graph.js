@@ -1,4 +1,4 @@
-import file from './db2.json' assert {type: 'json'};
+import file from '../db2.json' assert {type: 'json'};
 
 const nodeCheckBoxes = document.getElementsByName("nodeFilter");
 

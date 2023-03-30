@@ -2,7 +2,7 @@ import file from './db2.json' assert {type: 'json'};
 
 //const nodeCheckBoxes = document.getElementsByName("nodeFilter");
 
-const displayResult = document.getElementById("myresult");
+
 
 const problems = file["problems"];
 const reductions = file["reductions"];
@@ -72,12 +72,14 @@ const options = {
 };
 var network = new vis.Network(container, data, options);
 
-let searchInput = document.getElementById("search-input");
-let searchButton = document.getElementById("search-btn");
 
+let problemName = document.getElementById("problem-name");
+let searchButton = document.getElementById("search-button");
+
+// Search for nodes
 searchButton.addEventListener("click", function(event) {
     event.preventDefault();
-    var query = searchInput.value.toLowerCase();
+    var query = problemName.value.toLowerCase();
     if (!query) {
         network.unselectAll();
         return;
@@ -94,14 +96,29 @@ searchButton.addEventListener("click", function(event) {
             }
         }
     }
-    
 
     // Highlight matching nodes
     let matchingNodeIds = matchingNodes.getIds();
     network.selectNodes(matchingNodeIds, false);
 
-    let matchingNodeData = problems.filter(p => matchingNodeIds.includes(p["id"]));
-    displayResult.innerHTML = JSON.stringify(matchingNodeData);
+    // Display result on page
+    const displayResult = document.getElementById("myresult");
+    let matchingNodeData = problems.filter(p => matchingNodeIds.includes(p["id"])).map(p => {
+        var div = `<div class="result-field">
+            <p>id: ${p.id} &nbsp;
+            name: ${p.name} &nbsp;
+            also known as: ${p.also_known_as} <br>
+            introduced at: ${p.introduced_at} <br>
+            parameters: ${p.parameters} &nbsp;
+            algorithms: ${p.algorithms} &nbsp;
+            category: ${p.category} &nbsp;
+            implemented: ${p.implemented}
+            </p>
+        </div>
+        `;
+        return div;
+    }).join(""); //remove comma
+    displayResult.innerHTML = matchingNodeData;
 });
 
 let findPathButton = document.getElementById("find-path");
@@ -220,7 +237,5 @@ findPathButton.addEventListener("click", function(event) {
     network.selectEdges(edges_need_highlight);
 });
 
-
-// 
 
  
