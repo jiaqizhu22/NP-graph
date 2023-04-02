@@ -37,7 +37,7 @@
                 <label for="from-date">From Date: </label>
                 <input type="date" id="from-date" value="">
                 <label for="to-date">To Date: </label>
-                <input type="date" id="to-date" value="">
+                <input type="date" id="to-date" onfocus="this.max=new Date().toISOString().split('T')[0]" value="">
             </div>
             <div class="search-field">
                 <label for="categories">Categories: </label>

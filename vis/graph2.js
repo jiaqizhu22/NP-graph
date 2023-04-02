@@ -1,13 +1,11 @@
 import file from './db2.json' assert {type: 'json'};
 
-//const nodeCheckBoxes = document.getElementsByName("nodeFilter");
-
-
-
 const problems = file["problems"];
 const reductions = file["reductions"];
 var nodes = new vis.DataSet();
 var edges = new vis.DataSet();
+
+let searchButton = document.getElementById("search-button");
 
 // Add nodes
 for (var i = 0; i < problems.length; i++) {
@@ -29,6 +27,10 @@ var data = {
     edges: edges
 };
 const options = {
+    autoResize: true,
+    height: '100%',
+    width: '100%',
+    clickToUse: false,
     nodes: {
         borderWidth: 2,
         shape: "circle",
@@ -58,11 +60,13 @@ const options = {
         hover: true,
         tooltipDelay: 0,
         zoomView: true,
-        dragView: false,
+        zoomSpeed: 0.2,
+        dragView: true,
         multiselect: true,
+        navigationButtons: true,
     },
     physics: {
-        enabled: true
+        enabled: false
     },
     nodes: {
         color: {
@@ -72,31 +76,51 @@ const options = {
 };
 var network = new vis.Network(container, data, options);
 
-
-let problemName = document.getElementById("problem-name");
-let searchButton = document.getElementById("search-button");
-
 // Search for nodes
 searchButton.addEventListener("click", function(event) {
     event.preventDefault();
-    var query = problemName.value.toLowerCase();
-    if (!query) {
-        network.unselectAll();
-        return;
-    }
-    let searchStrings = query.split(" ");
+    let problemName = document.getElementById("problem-name");
+    let paperTitle = document.getElementById("paper-name");
+    let authorName = document.getElementById("author-name");
+    let algorithms = document.getElementById("algorithms");
+    let fromDate = document.getElementById["from-date"];
+    let toDate = document.getElementById["to-date"];
+    let categories = document.getElementById["categories"];
+    let implemented = document.getElementById["implemented"];
+    let verified = document.getElementById["verified"];
+
 
     let matchingNodes = new vis.DataSet();
     let nodes = data.nodes.get();
 
-    for (let n = 0; n < searchStrings.length; n++) {
-        for (let i = 0; i < nodes.length; i++) {
-            if (nodes[i].label.toLowerCase().includes(searchStrings[n]) || nodes[i].title.toLowerCase().includes(searchStrings[n])) {
-                matchingNodes.add(nodes[i]);
+    var has_change = false;
+    console.log(has_change.toString());
+
+    console.log(problemName.value);
+    if (problemName.value) {
+        var query = problemName.value.toLowerCase();
+        has_change = true;
+        console.log(has_change.toString());
+        if (!query) {
+            network.unselectAll();
+            return;
+        }
+        let searchStrings = query.split(" ");
+        for (let n = 0; n < searchStrings.length; n++) {
+            for (let i = 0; i < nodes.length; i++) {
+                if (nodes[i].label.toLowerCase().includes(searchStrings[n]) || nodes[i].title.toLowerCase().includes(searchStrings[n])) {
+                    matchingNodes.add(nodes[i]);
+                }
             }
         }
+    } else if (paperTitle.value) {
+        var query = paperTitle.value.toLowerCase();
+        if (!query) {
+            network.unselectAll();
+            return;
+        }
     }
-
+    
     // Highlight matching nodes
     let matchingNodeIds = matchingNodes.getIds();
     network.selectNodes(matchingNodeIds, false);

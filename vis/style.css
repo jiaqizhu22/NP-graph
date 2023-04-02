@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 #mynetwork {
     width: 65vw;
-    height: 85vh;
+    height: 100vh;
     border: 1px solid lightslategrey;
+    margin: 1%;
 }
 
 .header {
@@ -10,6 +13,7 @@
     text-align: center;
     padding: 0%;
     margin: 0%;
+    background-color: rgb(59, 147, 225);
 }
 
 #myresult {
@@ -28,17 +32,24 @@
 }
 
 .search-field-container {
-    display: inline-flex;
+    display: flex;
     flex-flow: column nowrap;
-    justify-content: left space-evenly;
-    padding: 0%;
+    justify-content: left;
+    align-content: flex-start;
+    padding: 1%;
     margin: 0%;
+    gap: 0;
 }
 
 .search-field {
     flex: auto;
     padding: 0;
     margin: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: content;
+    font-size: small;
+    font-family: 'Roboto', sans-serif;
 }
 
 .footer {
@@ -49,8 +60,8 @@
     border: 1px burlywood solid;
     padding: 1%;
     margin: 1%;
-    font-size: small;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: smaller;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* Medium screens */
