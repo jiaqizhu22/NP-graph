@@ -335,6 +335,16 @@
             "algorithms": [],
             "category": ["F"],
             "implemented": true
+        },
+        {
+            "id": "22",
+            "name": "Test Node 1",
+            "also_known_as": ["fake node"],
+            "introduced_at": [],
+            "parameters" : [],
+            "algorithms": [],
+            "category": ["Z"],
+            "implemented": false
         }
     ],
     "reductions" : [
@@ -662,29 +672,37 @@
             "input": 11,
             "output": 14,
             "weight": 1,
-            "introduced_at": [
-                {
-                    "title": "Reducibility Among Combinatorial Problems",
-                    "author": "Richard Karp",
-                    "publish date": "1972"
-                }
-            ],
+            "introduced_at": [],
             "formulas": [],
             "implemented": false, 
-            "verified": false,
+            "verified": true,
             "description": []   
         },
         {
             "input": 16,
             "output": 21,
             "weight": 1,
-            "introduced_at": [
-                {
-                    "title": "Reducibility Among Combinatorial Problems",
-                    "author": "Richard Karp",
-                    "publish date": "1972"
-                }
-            ],
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": false,
+            "description": []   
+        },
+        {
+            "input": 1,
+            "output": 22,
+            "weight": 1,
+            "introduced_at": [],
+            "formulas": [],
+            "implemented": false, 
+            "verified": true,
+            "description": []   
+        },
+        {
+            "input": 4,
+            "output": 22,
+            "weight": 1,
+            "introduced_at": [],
             "formulas": [],
             "implemented": false, 
             "verified": false,

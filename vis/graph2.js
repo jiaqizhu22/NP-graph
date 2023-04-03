@@ -5,12 +5,13 @@ const reductions = file["reductions"];
 var nodes = new vis.DataSet();
 var edges = new vis.DataSet();
 
-let searchButton = document.getElementById("search-button");
+let searchNodeButton = document.getElementById("search-button");
+
 
 // Add nodes
 for (var i = 0; i < problems.length; i++) {
     var node = JSON.parse(JSON.stringify(problems[i]));
-    var node_info = JSON.stringify(node);
+    var node_info = JSON.stringify(node).replace(/,/g, ',\n');
     nodes.add({id: problems[i]["id"], label: problems[i]["name"], category: problems[i]["category"][0], title: node_info}); 
 }
 // Add edges
@@ -152,7 +153,7 @@ function matchingNodes(node, searchQuery) {
 
 
 // Search for nodes
-searchButton.addEventListener("click", function(event) {
+searchNodeButton.addEventListener("click", function(event) {
     event.preventDefault();
 
     // Get all search keywords
@@ -192,7 +193,6 @@ searchButton.addEventListener("click", function(event) {
         searchQuery["implemented"] = implemented.value.toLowerCase();
     }
     
-    console.log(searchQuery["implemented"] );
     if (Object.keys(searchQuery).length === 1 && searchQuery["implemented"] === "true") {
         network.selectNodes(allIds);
     } else {
