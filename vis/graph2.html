@@ -15,8 +15,9 @@
     </header> 
 
     <body class="wrapper">
-        
         <aside class="aside aside-1 search-field-container">
+            <label>(Enter search terms separated by ",")</label>
+            
             <div class="search-field">
                 <label for="problem-name">Problem Name: </label>
                 <input type="text" id="problem-name" placeholder="search by problem name or key words" size="40" value="">
@@ -35,9 +36,9 @@
             </div>
             <div class="search-field">
                 <label for="from-date">From Date: </label>
-                <input type="date" id="from-date" value="">
+                <input type="date" id="from-date" value="1970-01-01">
                 <label for="to-date">To Date: </label>
-                <input type="date" id="to-date" onfocus="this.max=new Date().toISOString().split('T')[0]" value="">
+                <input type="date" id="to-date" onfocus="this.max=new Date().toISOString().split('T')[0]" value="2023-01-01">
             </div>
             <div class="search-field">
                 <label for="categories">Categories: </label>
@@ -46,19 +47,30 @@
             <div class="search-field">
                 <label for="implemented">Is Implemented: </label>
                 <select id="implemented">
-                    <option [ngValue]="true">True</option>
-                    <option [ngValue]="false" selected>False</option>
+                    <option [ngValue]="true" selected>True</option>
+                    <option [ngValue]="false">False</option>
                 </select>
             </div>
-            <div class="search-field">
-                <label for="verified">Is Verified: </label>
-                <select id="verified">
-                    <option [ngValue]="true">True</option>
-                    <option [ngValue]="false" selected>False</option>
-                </select>
-            </div>
+            
             <div class="search-field">
                 <button id="search-button">Search for nodes</button>
+            </div> 
+            <div class="search-field">
+                <label for="edge-verified">Is Verified: </label>
+                <select id="edge-verified">
+                    <option [ngValue]="true" selected>True</option>
+                    <option [ngValue]="false">False</option>
+                </select>
+            </div>
+            <div class="search-field">
+                <label for="edge-implemented">Is Implemented: </label>
+                <select id="edge-implemented">
+                    <option [ngValue]="true" selected>True</option>
+                    <option [ngValue]="false">False</option>
+                </select>
+            </div>
+            <div class="search-field">
+                <button id="search-edge-button">Search for Edges</button>
             </div> 
 
             <div class="search-field">
