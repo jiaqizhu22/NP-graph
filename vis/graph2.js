@@ -56,6 +56,10 @@ const options = {
             opacity: 0.9,
         },
         selectionWidth: 4,
+        smooth: {
+            type: 'discrete',
+            forceDirection: 'none'
+        },
     },
     interaction: {
         hover: true,
