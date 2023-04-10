@@ -17,7 +17,7 @@ for (var i = 0; i < problems.length; i++) {
 // Add edges
 for (var i = 0; i < reductions.length; i++) {
     var edge = JSON.parse(JSON.stringify(reductions[i]));
-    var edge_info = JSON.stringify(edge);
+    var edge_info = JSON.stringify(edge).replace(/,/g, ',\n');
     edges.add({from: reductions[i]["input"], to: reductions[i]["output"], weight: reductions[i]["weight"], title: edge_info, arrows: { to: { enabled: true, type: "arrow" }}, dashes: !reductions[i]["implemented"]});
 }
 
@@ -83,6 +83,7 @@ network.selectNodes(allIds);
 
 function matchingNodes(node, searchQuery) {
     let target = Object.keys(searchQuery).length;
+    console.log(target);
     let matchingFieldCount = 0;
     for (let field in searchQuery) {
         if (field === "problemName") {
@@ -180,12 +181,12 @@ searchNodeButton.addEventListener("click", function(event) {
     if (algorithms.value !== "") {
         searchQuery["algorithms"] = algorithms.value.toLowerCase().replace(/,\s+|\s+,/g, ",").split(",");
     }
-    // if (fromDate.value) {
-    //     searchQuery["fromDate"] = fromDate.value;
-    // }
-    // if (toDate.value) {
-    //     searchQuery["toDate"] = toDate.value;
-    // }
+    if (fromDate.value !== "") {
+        searchQuery["fromDate"] = fromDate.value;
+    }
+    if (toDate.value !== "") {
+        searchQuery["toDate"] = toDate.value;
+    }
     if (categories.value !== "") {
         searchQuery["categories"] = categories.value.toLowerCase().replace(/,\s+|\s+,/g, ",").split(",");
     }
@@ -207,11 +208,12 @@ searchNodeButton.addEventListener("click", function(event) {
             }
         }
         // Highlight matching nodes only
+        const displayResult = document.getElementById("myresult");
+
         if (matchingNodeIds.length > 0) {
             network.selectNodes(matchingNodeIds, false);
 
             // Display result on page
-            const displayResult = document.getElementById("myresult");
             let matchingNodeData = problems.filter(p => matchingNodeIds.includes(p["id"])).map(p => {
                 var paperList = p.introduced_at.map(function(paper) {
                     return `title: ${paper.title}, author: ${paper.author}, publish date: ${paper['publish date']}`;
@@ -232,6 +234,9 @@ searchNodeButton.addEventListener("click", function(event) {
                 return div;
             }).join(""); //remove comma
             displayResult.innerHTML = matchingNodeData;
+        } else {
+            displayResult.innerHTML = "";
+            network.unselectAll();
         } 
     }
 });
