@@ -96,6 +96,9 @@ function matchingNodes(node, searchQuery) {
                 matchingFieldCount++;
             } else {
                 let nodeKeywords = node["name"].toLowerCase().split(" ");
+                for (let i = 0; i < node["also_known_as"].length; i++) {
+                    nodeKeywords.push(node["also_known_as"][i].toLowerCase());
+                }
                 for (let i = 0; i < fieldKeywords.length; i++) {
                     if (nodeKeywords.includes(fieldKeywords[i])) {
                         matchingFieldCount++;
@@ -156,6 +159,11 @@ function matchingNodes(node, searchQuery) {
     return false;
 }
 
+function trimSpace(str) {
+    var temp_words = str.toLowerCase().replace(/\s*,\s*/g, ",").split(",");
+    var res_words = temp_words.map( w => w.trim());
+    return res_words;
+}
 
 // Search for nodes
 searchNodeButton.addEventListener("click", function(event) {
@@ -174,16 +182,16 @@ searchNodeButton.addEventListener("click", function(event) {
     // Build searchQuery
     let searchQuery = {};
     if (problemName.value !== "") {
-        searchQuery["problemName"] = problemName.value.toLowerCase().replace(/,\s+|\s+,/g, ",").split(",");
+        searchQuery["problemName"] = trimSpace(problemName.value);
     }
     if (paperTitle.value !== "") {
-        searchQuery["paperTitle"] = paperTitle.value.toLowerCase().replace(/,\s+|\s+,/g, ",").split(",");
+        searchQuery["paperTitle"] = trimSpace(paperTitle.value);
     }
     if (authorName.value !== "") {
-        searchQuery["author"] = authorName.value.toLowerCase().replace(/,\s+|\s+,/g, ",").split(",");
+        searchQuery["author"] = trimSpace(authorName.value);
     }
     if (algorithms.value !== "") {
-        searchQuery["algorithms"] = algorithms.value.toLowerCase().replace(/,\s+|\s+,/g, ",").split(",");
+        searchQuery["algorithms"] = trimSpace(algorithms.value);
     }
     if (fromDate.value !== "") {
         searchQuery["fromDate"] = fromDate.value;
@@ -192,7 +200,7 @@ searchNodeButton.addEventListener("click", function(event) {
         searchQuery["toDate"] = toDate.value;
     }
     if (categories.value !== "") {
-        searchQuery["categories"] = categories.value.toLowerCase().replace(/,\s+|\s+,/g, ",").split(",");
+        searchQuery["categories"] = trimSpace(categories.value);
     }
     if (implemented.value) {
         searchQuery["implemented"] = implemented.value.toLowerCase();
