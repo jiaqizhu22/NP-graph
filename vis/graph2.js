@@ -6,6 +6,7 @@ var nodes = new vis.DataSet();
 var edges = new vis.DataSet();
 
 let searchNodeButton = document.getElementById("search-button");
+let searchEdgeButton = document.getElementById("search-edge-button");
 
 
 // Add nodes
@@ -18,7 +19,14 @@ for (var i = 0; i < problems.length; i++) {
 for (var i = 0; i < reductions.length; i++) {
     var edge = JSON.parse(JSON.stringify(reductions[i]));
     var edge_info = JSON.stringify(edge).replace(/,/g, ',\n');
-    edges.add({from: reductions[i]["input"], to: reductions[i]["output"], weight: reductions[i]["weight"], title: edge_info, arrows: { to: { enabled: true, type: "arrow" }}, dashes: !reductions[i]["implemented"]});
+    edges.add({
+        from: reductions[i]["input"], 
+        to: reductions[i]["output"], 
+        weight: reductions[i]["weight"], 
+        title: edge_info, 
+        arrows: { to: { enabled: true, type: "arrow" }}, 
+        dashes: !reductions[i]["implemented"]
+    });
 }
 
 // Create network
@@ -82,12 +90,12 @@ const options = {
 var network = new vis.Network(container, data, options);
 
 // By default, select all nodes and edges
-var allIds = network.body.data.nodes.getIds();
-network.selectNodes(allIds);
+var allNodeIds = network.body.data.nodes.getIds();
+var allEdgeIds = network.body.data.edges.getIds();
+network.selectNodes(allNodeIds);
 
 function matchingNodes(node, searchQuery) {
     let target = Object.keys(searchQuery).length;
-    console.log(target);
     let matchingFieldCount = 0;
     for (let field in searchQuery) {
         if (field === "problemName") {
@@ -115,7 +123,6 @@ function matchingNodes(node, searchQuery) {
                 } else {
                     let titleKeywords = paper["title"].toLowerCase().split(" ");
                     for (let i = 0; i < fieldKeywords.length; i++) {
-                        console.log(fieldKeywords[i]);
                         if (titleKeywords.includes(fieldKeywords[i])) {
                             matchingFieldCount++;
                         }
@@ -132,7 +139,6 @@ function matchingNodes(node, searchQuery) {
                 } else {
                     let titleKeywords = paper["author"].toLowerCase().split(" ");
                     for (let i = 0; i < fieldKeywords.length; i++) {
-                        console.log(fieldKeywords[i]);
                         if (titleKeywords.includes(fieldKeywords[i])) {
                             matchingFieldCount++;
                         }
@@ -159,11 +165,66 @@ function matchingNodes(node, searchQuery) {
     return false;
 }
 
+function matchingEdges(edge, searchQuery) {
+    let target = Object.keys(searchQuery).length;
+    let matchingFieldCount = 0;
+    for (let field in searchQuery) {
+        if (field === "paperTitle") {
+            for (let i = 0; i < edge["introduced_at"].length; i++) {
+                let paper = edge["introduced_at"][i];
+                let fieldKeywords = searchQuery[field];
+                if (fieldKeywords.includes(paper["title"].toLowerCase())) {
+                    matchingFieldCount++;
+                } else {
+                    let titleKeywords = paper["title"].toLowerCase().split(" ");
+                    for (let i = 0; i < fieldKeywords.length; i++) {
+                        if (titleKeywords.includes(fieldKeywords[i])) {
+                            matchingFieldCount++;
+                        }
+                    }
+                }
+            }
+        }
+        if (field === "author") {
+            for (let i = 0; i < edge["introduced_at"].length; i++) {
+                let paper = edge["introduced_at"][i];
+                let fieldKeywords = searchQuery[field];
+                if (fieldKeywords.includes(paper["author"].toLowerCase())) {
+                    matchingFieldCount++;
+                } else {
+                    let titleKeywords = paper["author"].toLowerCase().split(" ");
+                    for (let i = 0; i < fieldKeywords.length; i++) {
+                        if (titleKeywords.includes(fieldKeywords[i])) {
+                            matchingFieldCount++;
+                        }
+                    }
+                }
+            }
+        }
+        if (field === "implemented" && edge.implemented.toString() === searchQuery[field]) {
+            matchingFieldCount++;
+        }
+        if (field === "verified" && edge.verified.toString() === searchQuery[field]) {
+            matchingFieldCount++;
+        }
+    }
+    if (matchingFieldCount === target) {
+        return true;
+    }
+    return false;
+}
+
 function trimSpace(str) {
     var temp_words = str.toLowerCase().replace(/\s*,\s*/g, ",").split(",");
     var res_words = temp_words.map( w => w.trim());
     return res_words;
 }
+
+let matchingNodeIds = [];
+let matchingEdgeIds = [];
+// Highlight matching nodes only
+const displayResult = document.getElementById("myresult");
+const displayEdgeResult = document.getElementById("myedgeresult");
 
 // Search for nodes
 searchNodeButton.addEventListener("click", function(event) {
@@ -207,20 +268,90 @@ searchNodeButton.addEventListener("click", function(event) {
     }
     
     if (Object.keys(searchQuery).length === 1 && searchQuery["implemented"] === "true") {
-        network.selectNodes(allIds);
+        matchingNodeIds = [];
+        displayResult.innerHTML = "";
+        network.selectNodes(allNodeIds);
     } else {
         // Find nodes matching searchQuery
-        let matchingNodeIds = [];
         for (let i = 0; i < problems.length; i++) {
             let node = problems[i];
             let match = matchingNodes(node, searchQuery);
             if (match) {
-                console.log(node);
                 matchingNodeIds.push(node["id"]);
             }
         }
-        // Highlight matching nodes only
-        const displayResult = document.getElementById("myresult");
+
+        if (matchingNodeIds.length > 0) {
+            network.selectNodes(matchingNodeIds, false);
+
+            // Display result on page
+            let matchingNodeData = problems.filter(p => matchingNodeIds.includes(p["id"])).map(p => {
+                var paperList = p.introduced_at.map(function(paper) {
+                    return `title: ${paper.title}, author: ${paper.author}, publish date: ${paper['publish date']}`;
+                }).join("<br>");
+
+                var div = `<div class="result-field">
+                    <p>id: ${p.id}&nbsp;
+                    name: ${p.name}&nbsp;
+                    also known as: ${p.also_known_as}<br>
+                    introduced at:<br>${paperList}<br>
+                    parameters: ${p.parameters}&nbsp;
+                    algorithms: ${p.algorithms}&nbsp;
+                    category: ${p.category}&nbsp;
+                    implemented: ${p.implemented}
+                    </p>
+                </div>
+                `;
+                return div;
+            }).join(""); //remove comma
+            displayResult.innerHTML = matchingNodeData;
+        } else {
+            displayResult.innerHTML = "";
+            network.unselectAll();
+        } 
+    }
+});
+
+searchEdgeButton.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    let paperTitle = document.getElementById("edge-paper-name");
+    let authorName = document.getElementById("edge-author-name");
+    let algorithms = document.getElementById("edge-algorithm");
+    let implemented = document.getElementById("edge-implemented");
+    let verified = document.getElementById("edge-verified");
+
+    let searchQuery = {};
+    if (paperTitle.value !== "") {
+        searchQuery["paperTitle"] = trimSpace(paperTitle.value);
+    }
+    if (authorName.value !== "") {
+        searchQuery["author"] = trimSpace(authorName.value);
+    }
+    if (algorithms.value !== "") {
+        searchQuery["algorithms"] = trimSpace(algorithms.value);
+    }
+    if (verified.value) {
+        searchQuery["verified"] = verified.value.toLowerCase();
+    }
+    if (implemented.value) {
+        searchQuery["implemented"] = implemented.value.toLowerCase();
+    }
+    console.log(searchQuery);
+
+    if (Object.keys(searchQuery).length === 2 && searchQuery["implemented"] === "true" && searchQuery["verified"] === "true") {
+        matchingEdgeIds = [];
+        displayEdgeResult.innerHTML = "";
+        network.selectEdges(allEdgeIds);
+    } else {
+        // Find nodes matching searchQuery
+        for (let i = 0; i < reductions.length; i++) {
+            let edge = reductions[i];
+            let match = matchingEdges(edge, searchQuery);
+            if (match) {
+                //matchingEdgeIds.push(edgeId);
+            }
+        }
 
         if (matchingNodeIds.length > 0) {
             network.selectNodes(matchingNodeIds, false);
