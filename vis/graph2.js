@@ -93,9 +93,17 @@ var allEdgeIds = network.body.data.edges.getIds();
 network.selectNodes(allNodeIds);
 
 // Buttons
-const searchNodeButton = document.getElementById("search-button");
+const searchNodeButton = document.getElementById("search-node-button");
 const searchEdgeButton = document.getElementById("search-edge-button");
+const findPathButton = document.getElementById("find-path");
 
+// Highlight matching nodes only
+const displayResult = document.getElementById("my-node-result");
+const displayEdgeResult = document.getElementById("my-edge-result");
+var matchingNodeIds = allNodeIds;
+var matchingEdgeIds = allEdgeIds;
+
+/*
 function matchingNodes(node, searchQuery) {
     let target = Object.keys(searchQuery).length;
     let matchingFieldCount = 0;
@@ -167,6 +175,7 @@ function matchingNodes(node, searchQuery) {
     return false;
 }
 
+
 function matchingEdges(edge, searchQuery) {
     let target = Object.keys(searchQuery).length;
     let matchingFieldCount = 0;
@@ -215,53 +224,41 @@ function matchingEdges(edge, searchQuery) {
     }
     return false;
 }
+*/
 
-let matchingNodeIds = [];
-let matchingEdgeIds = [];
-// Highlight matching nodes only
-const displayResult = document.getElementById("myresult");
-const displayEdgeResult = document.getElementById("myedgeresult");
+function filterByPaper(node, keywords) {
+    let papers = node.introduced_at;
+    if 
+};
 
 // Search for nodes
 searchNodeButton.addEventListener("click", function(event) {
     event.preventDefault();
 
     // Get all search keywords
-    let problemName = document.getElementById("problem-name");
-    let paperTitle = document.getElementById("paper-name");
-    let authorName = document.getElementById("author-name");
-    let algorithms = document.getElementById("algorithms");
-    let fromDate = document.getElementById("from-date");
-    let toDate = document.getElementById("to-date");
-    let categories = document.getElementById("categories");
-    let implemented = document.getElementById("implemented");
+    // A list of substrings or []
+    let problemName = helper.trimSpace(document.getElementById("problem-name").value);
+    console.log(problemName);
+    let paperTitle = helper.trimSpace(document.getElementById("paper-name").value);
+    console.log(paperTitle);
+    let authorName = helper.trimSpace(document.getElementById("author-name").value);
+    console.log(authorName);
+    let algorithms = helper.trimSpace(document.getElementById("algorithms").value);
+    console.log(algorithms);
+    let categories = helper.trimSpace(document.getElementById("categories").value);
+    console.log(categories);
+    // Date in format of yyyy-mm-dd or empty as ""
+    let fromDate = document.getElementById("from-date").value;
+    console.log(fromDate);
+    let toDate = document.getElementById("to-date").value;
+    console.log(toDate);
+    // true or false
+    let implemented = document.getElementById("implemented").value.toLowerCase();
+    console.log(implemented);
 
-    // Build searchQuery
-    let searchQuery = {};
-    if (problemName.value !== "") {
-        searchQuery["problemName"] = helper.trimSpace(problemName.value);
-    }
-    if (paperTitle.value !== "") {
-        searchQuery["paperTitle"] = helper.trimSpace(paperTitle.value);
-    }
-    if (authorName.value !== "") {
-        searchQuery["author"] = helper.trimSpace(authorName.value);
-    }
-    if (algorithms.value !== "") {
-        searchQuery["algorithms"] = helper.trimSpace(algorithms.value);
-    }
-    if (fromDate.value !== "") {
-        searchQuery["fromDate"] = fromDate.value;
-    }
-    if (toDate.value !== "") {
-        searchQuery["toDate"] = toDate.value;
-    }
-    if (categories.value !== "") {
-        searchQuery["categories"] = helper.trimSpace(categories.value);
-    }
-    if (implemented.value) {
-        searchQuery["implemented"] = implemented.value.toLowerCase();
-    }
+    let matchingNodes = problemName.length === 0 ? problems : problems.filter(p => helper.strMatchSubstr(p.name, problemName) || helper.listStrMatchSubstr(p.also_known_as, problemName));
+    matchingNodes = paperTitle.length === 0 ? matchingNodes : matchingNodes.filter(node => filterByPaper(node));
+
     
     if (Object.keys(searchQuery).length === 1 && searchQuery["implemented"] === "true") {
         matchingNodeIds = [];
@@ -271,10 +268,10 @@ searchNodeButton.addEventListener("click", function(event) {
         // Find nodes matching searchQuery
         for (let i = 0; i < problems.length; i++) {
             let node = problems[i];
-            let match = matchingNodes(node, searchQuery);
-            if (match) {
-                matchingNodeIds.push(node["id"]);
-            }
+            //let match = matchingNodes(node, searchQuery);
+            // if (match) {
+            //     matchingNodeIds.push(node["id"]);
+            // }
         }
 
         if (matchingNodeIds.length > 0) {
@@ -380,7 +377,7 @@ searchEdgeButton.addEventListener("click", function(event) {
     }
 });
 
-let findPathButton = document.getElementById("find-path");
+
 
 function findNodeIdByLabel(targetLabel) {
     let nodes = data.nodes.get();
