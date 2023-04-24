@@ -7,16 +7,16 @@ var nodes = new vis.DataSet();
 var edges = new vis.DataSet();
 
 // Add nodes
-for (var i = 0; i < problems.length; i++) {
-    var node = JSON.parse(JSON.stringify(problems[i]));
-    var node_info = JSON.stringify(node).replace(/:/g, ': ').replace(/\\n/g, '').replace(/,/g, ',\n');
-    console.log(node_info);
+for (let i = 0; i < problems.length; i++) {
+    let node = JSON.parse(JSON.stringify(problems[i]));
+    let node_info = JSON.stringify(node).replace(/:/g, ': ').replace(/\\n/g, '').replace(/,/g, ',\n');
     nodes.add({id: problems[i]["id"], label: problems[i]["name"], category: problems[i]["category"][0], title: node_info}); 
 }
+
 // Add edges
-for (var i = 0; i < reductions.length; i++) {
-    var edge = JSON.parse(JSON.stringify(reductions[i]));
-    var edge_info = JSON.stringify(edge).replace(/,/g, ',\n');
+for (let i = 0; i < reductions.length; i++) {
+    let edge = JSON.parse(JSON.stringify(reductions[i]));
+    let edge_info = JSON.stringify(edge).replace(/:/g, ': ').replace(/,/g, ',\n');
     edges.add({
         from: reductions[i]["input"], 
         to: reductions[i]["output"], 
@@ -33,7 +33,7 @@ var data = {
     nodes: nodes,
     edges: edges
 };
-const options = {
+var options = {
     autoResize: true,
     height: '100%',
     width: '100%',
@@ -87,16 +87,14 @@ const options = {
 };
 var network = new vis.Network(container, data, options);
 
-// Buttons
-let searchNodeButton = document.getElementById("search-button");
-let searchEdgeButton = document.getElementById("search-edge-button");
-
-
-
 // By default, select all nodes and edges
 var allNodeIds = network.body.data.nodes.getIds();
 var allEdgeIds = network.body.data.edges.getIds();
 network.selectNodes(allNodeIds);
+
+// Buttons
+const searchNodeButton = document.getElementById("search-button");
+const searchEdgeButton = document.getElementById("search-edge-button");
 
 function matchingNodes(node, searchQuery) {
     let target = Object.keys(searchQuery).length;
