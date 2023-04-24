@@ -1,18 +1,16 @@
 import file from './db2.json' assert {type: 'json'};
+import * as helper from './helper.js';
 
 const problems = file["problems"];
 const reductions = file["reductions"];
 var nodes = new vis.DataSet();
 var edges = new vis.DataSet();
 
-let searchNodeButton = document.getElementById("search-button");
-let searchEdgeButton = document.getElementById("search-edge-button");
-
-
 // Add nodes
 for (var i = 0; i < problems.length; i++) {
     var node = JSON.parse(JSON.stringify(problems[i]));
-    var node_info = JSON.stringify(node).replace(/,/g, ',\n');
+    var node_info = JSON.stringify(node).replace(/:/g, ': ').replace(/\\n/g, '').replace(/,/g, ',\n');
+    console.log(node_info);
     nodes.add({id: problems[i]["id"], label: problems[i]["name"], category: problems[i]["category"][0], title: node_info}); 
 }
 // Add edges
@@ -88,6 +86,12 @@ const options = {
     }
 };
 var network = new vis.Network(container, data, options);
+
+// Buttons
+let searchNodeButton = document.getElementById("search-button");
+let searchEdgeButton = document.getElementById("search-edge-button");
+
+
 
 // By default, select all nodes and edges
 var allNodeIds = network.body.data.nodes.getIds();
@@ -214,12 +218,6 @@ function matchingEdges(edge, searchQuery) {
     return false;
 }
 
-function trimSpace(str) {
-    var temp_words = str.toLowerCase().replace(/\s*,\s*/g, ",").split(",");
-    var res_words = temp_words.map( w => w.trim());
-    return res_words;
-}
-
 let matchingNodeIds = [];
 let matchingEdgeIds = [];
 // Highlight matching nodes only
@@ -243,16 +241,16 @@ searchNodeButton.addEventListener("click", function(event) {
     // Build searchQuery
     let searchQuery = {};
     if (problemName.value !== "") {
-        searchQuery["problemName"] = trimSpace(problemName.value);
+        searchQuery["problemName"] = helper.trimSpace(problemName.value);
     }
     if (paperTitle.value !== "") {
-        searchQuery["paperTitle"] = trimSpace(paperTitle.value);
+        searchQuery["paperTitle"] = helper.trimSpace(paperTitle.value);
     }
     if (authorName.value !== "") {
-        searchQuery["author"] = trimSpace(authorName.value);
+        searchQuery["author"] = helper.trimSpace(authorName.value);
     }
     if (algorithms.value !== "") {
-        searchQuery["algorithms"] = trimSpace(algorithms.value);
+        searchQuery["algorithms"] = helper.trimSpace(algorithms.value);
     }
     if (fromDate.value !== "") {
         searchQuery["fromDate"] = fromDate.value;
@@ -261,7 +259,7 @@ searchNodeButton.addEventListener("click", function(event) {
         searchQuery["toDate"] = toDate.value;
     }
     if (categories.value !== "") {
-        searchQuery["categories"] = trimSpace(categories.value);
+        searchQuery["categories"] = helper.trimSpace(categories.value);
     }
     if (implemented.value) {
         searchQuery["implemented"] = implemented.value.toLowerCase();
@@ -323,13 +321,13 @@ searchEdgeButton.addEventListener("click", function(event) {
 
     let searchQuery = {};
     if (paperTitle.value !== "") {
-        searchQuery["paperTitle"] = trimSpace(paperTitle.value);
+        searchQuery["paperTitle"] = helper.trimSpace(paperTitle.value);
     }
     if (authorName.value !== "") {
-        searchQuery["author"] = trimSpace(authorName.value);
+        searchQuery["author"] = helper.trimSpace(authorName.value);
     }
     if (algorithms.value !== "") {
-        searchQuery["algorithms"] = trimSpace(algorithms.value);
+        searchQuery["algorithms"] = helper.trimSpace(algorithms.value);
     }
     if (verified.value) {
         searchQuery["verified"] = verified.value.toLowerCase();
