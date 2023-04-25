@@ -422,15 +422,20 @@ function dijkstra(startNodeId, endNodeId, nodes, edges) {
     for (const node of nodes) {
         distances[node.id] = Infinity;
     }
+    // 1 -> product; 0 -> max
     distances[startNodeId] = 0;
     let prev = {};
 
     let queue = [];
+
+    // push (current, 1) -> product; (current, 0) -> max
     queue.push(startNodeId);
+
     while (queue.length > 0) {
+        // (current, weight from previous to current)
         let current = queue.shift();
         let connectedEdges = getConnectedEdgesByNode(current, edges);
-
+        // use weight from previous to current here
         let tempDistance = distances[current] + 1;
         for (const edge of connectedEdges) {
             let neighbour = edge.to;
@@ -438,12 +443,13 @@ function dijkstra(startNodeId, endNodeId, nodes, edges) {
             if (tempDistance < distances[neighbour]) {
                 distances[neighbour] = tempDistance;
                 prev[neighbour] = current;
+
+                // push (neighbour, weight from current to neighbour)
                 queue.push(neighbour);
             }
         }
     }
     // test if end node was ever reached
-    
     if (distances[endNodeId] === Infinity) {
         return [];
     }
