@@ -503,6 +503,7 @@ findPathButton.addEventListener("click", function(event) {
     let path = dijkstra(startNodeId, endNodeId, nodes, edges);
     
     let edges_need_highlight = getEdgesFromPath(path);
+    console.log(edges_need_highlight);
     network.selectEdges(edges_need_highlight);
 });
 

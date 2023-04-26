@@ -51,6 +51,7 @@
                 <select id="implemented">
                     <option [ngValue]="true" selected>True</option>
                     <option [ngValue]="false">False</option>
+                    <option >All Possible Results</option>
                 </select>
             </div>
             
@@ -75,6 +76,7 @@
                 <select id="edge-verified">
                     <option [ngValue]="true" selected>True</option>
                     <option [ngValue]="false">False</option>
+                    <option >All Possible Results</option>
                 </select>
             </div>
             <div class="search-field">
@@ -82,6 +84,7 @@
                 <select id="edge-implemented">
                     <option [ngValue]="true" selected>True</option>
                     <option [ngValue]="false">False</option>
+                    <option >All Possible Results</option>
                 </select>
             </div>
             <div class="search-field">
@@ -98,8 +101,8 @@
                 <input type="text" id="to-node" placeholder="enter problem name" size="35">
             </div> 
             <div class="search-field">
-                <button id="find-path">Find path</button>
-                <button id="find-path-weight">Calculate path weight</button>
+                <button id="find-path">Find shortest path</button>
+                <button id="find-path-weight">Find all paths</button>
             </div>
             <div class="search-field" id="myresult"></div>
             <div class="search-field" id="myedgeresult"></div>
