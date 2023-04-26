@@ -9,7 +9,7 @@ var edges = new vis.DataSet();
 // Add nodes
 for (let i = 0; i < problems.length; i++) {
     let node = JSON.parse(JSON.stringify(problems[i]));
-    let node_info = JSON.stringify(node).replace(/:/g, ': ').replace(/\\n/g, '').replace(/,/g, ',\n');
+    let node_info = JSON.stringify(node).replace(/:/g, ': ').replace(/,/g, ',\n');
     nodes.add({
         id: problems[i].id, 
         label: problems[i].name, 
@@ -21,7 +21,7 @@ for (let i = 0; i < problems.length; i++) {
 // Add edges
 for (let i = 0; i < reductions.length; i++) {
     let edge = JSON.parse(JSON.stringify(reductions[i]));
-    let edge_info = JSON.stringify(edge).replace(/:/g, ': ').replace(/\\n/g, '').replace(/,/g, ',\n');
+    let edge_info = JSON.stringify(edge).replace(/:/g, ': ').replace(/,/g, ',\n');
     edges.add({
         id: reductions[i].id,
         from: reductions[i].input, 
@@ -45,8 +45,6 @@ var options = {
     width: '100%',
     clickToUse: false,
     nodes: {
-        borderWidth: 2,
-        shape: "circle",
         color: {
           border: "#2B7CE9", // default color for unselected nodes
           background: "#97C2FC", // default color for unselected nodes
@@ -85,11 +83,6 @@ var options = {
     physics: {
         enabled: false
     },
-    nodes: {
-        color: {
-          background: "#97C2FC"
-        }
-    }
 };
 var network = new vis.Network(container, data, options);
 
@@ -237,56 +230,135 @@ function filterByPaper(node, keywords) {
     
 };
 
+function getNodesIds(matchingNodes) {
+    let ids = [];
+    for (let i = 0; i < matchingNodes.length; i++) {
+        ids.push(matchingNodes[i].id);
+    }
+    return ids;
+}
+
 // Search for nodes
 searchNodeButton.addEventListener("click", function(event) {
     event.preventDefault();
 
     // Get all search keywords
+    let queries = {};
+
     // A list of substrings or []
-    let problemName = helper.trimSpace(document.getElementById("problem-name").value);
-    console.log(problemName);
-    let paperTitle = helper.trimSpace(document.getElementById("paper-name").value);
-    console.log(paperTitle);
-    let authorName = helper.trimSpace(document.getElementById("author-name").value);
-    console.log(authorName);
-    let algorithms = helper.trimSpace(document.getElementById("algorithms").value);
-    console.log(algorithms);
-    let categories = helper.trimSpace(document.getElementById("categories").value);
-    console.log(categories);
-    // Date in format of yyyy-mm-dd or empty as ""
-    let fromDate = document.getElementById("from-date").value;
-    console.log(fromDate);
-    let toDate = document.getElementById("to-date").value;
-    console.log(toDate);
-    // true or false
-    let implemented = document.getElementById("implemented").value.toLowerCase();
-    console.log(implemented);
-
-    let matchingNodes = problemName.length === 0 ? problems : problems.filter(p => helper.strMatchSubstr(p.name, problemName) || helper.listStrMatchSubstr(p.also_known_as, problemName));
-    matchingNodes = paperTitle.length === 0 ? matchingNodes : matchingNodes.filter(node => filterByPaper(node));
-
+    if (document.getElementById("problem-name").value !== "") {
+        queries["name"] = helper.trimSpace(document.getElementById("problem-name").value);
+        console.log(queries.name);
+    }
+    //let problemName = helper.trimSpace(document.getElementById("problem-name").value);
+    if (document.getElementById("paper-name").value !== "") {
+        queries["title"] = helper.trimSpace(document.getElementById("paper-name").value);
+    }
+    //let paperTitle = helper.trimSpace(document.getElementById("paper-name").value);
+    if (document.getElementById("author-name").value !== "") {
+        queries["author"] = helper.trimSpace(document.getElementById("author-name").value);
+    }
+    //let authorName = helper.trimSpace(document.getElementById("author-name").value);
+    if (document.getElementById("algorithms").value !== "") {
+        queries["algorithms"] = helper.trimSpace(document.getElementById("algorithms").value);
+    }
+    // let algorithms = helper.trimSpace(document.getElementById("algorithms").value);
+    if (document.getElementById("categories").value !== "") {
+        queries["categories"] = helper.trimSpace(document.getElementById("categories").value);
+    }
+    // let categories = helper.trimSpace(document.getElementById("categories").value);
     
-    if (Object.keys(searchQuery).length === 1 && searchQuery["implemented"] === "true") {
-        matchingNodeIds = [];
+    // Date in format of yyyy-mm-dd or empty as ""
+    if (document.getElementById("from-date").value !== "") {
+        queries["fromDate"] = document.getElementById("from-date").value;
+    }
+    //let fromDate = document.getElementById("from-date").value;
+    if ( document.getElementById("to-date").value !== "") {
+        queries["toDate"] =  document.getElementById("to-date").value;
+    }
+    //let toDate = document.getElementById("to-date").value;
+    
+    // true or false
+    //console.log(document.getElementById("implemented").value.toLowerCase());
+    if (document.getElementById("implemented").value.toLowerCase() !== "all possible results") {
+        queries["implemented"] = document.getElementById("implemented").value.toLowerCase()
+    }
+    console.log(queries);
+    
+    if (Object.keys(queries).length < 1) {
         displayResult.innerHTML = "";
         network.selectNodes(allNodeIds);
     } else {
-        // Find nodes matching searchQuery
-        for (let i = 0; i < problems.length; i++) {
-            let node = problems[i];
-            //let match = matchingNodes(node, searchQuery);
-            // if (match) {
-            //     matchingNodeIds.push(node["id"]);
-            // }
+        var matchingNodes = problems;
+        let keys = Object.keys(queries);
+        for (let k = 0; k < keys.length; k++) {
+            console.log(keys[k]);
+            if (keys[k] === "name") {
+                matchingNodes = matchingNodes.filter(function(p){
+                    if (helper.strMatchSubstr(p.name.toLowerCase(), queries.name) || helper.listStrMatchSubstr(p.also_known_as, queries.name)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+            }
+            if (keys[k] === "title") {
+                matchingNodes = matchingNodes.filter(function(p){
+                    for (let i = 0; i < p.introduced_at.length; i++) {
+                        let temp = p.introduced_at[i];
+                        if (helper.strMatchSubstr(temp.title.toLowerCase(), queries.title)) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                });
+            }
+            if (keys[k] === "author") {
+                matchingNodes = matchingNodes.filter(function(p){
+                    for (let i = 0; i < p.introduced_at.length; i++) {
+                        let temp = p.introduced_at[i];
+                        if (helper.strMatchSubstr(temp.author.toLowerCase(), queries.author)) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                });
+            }
+            if (keys[k] === "algorithms") {
+                matchingNodes = matchingNodes.filter(function(p){
+                    if (helper.listStrMatchSubstr(p.algorithms, queries.algorithms)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+            }
+            if (keys[k] === "categories") {
+                matchingNodes = matchingNodes.filter(function(p){
+                    if (helper.listStrMatchSubstr(p.category, queries.categories)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+            }
+            if (keys[k] === "implemented") {
+                matchingNodes = matchingNodes.filter(function(p) { return p.implemented.toString() === queries.implemented;});
+            }
         }
 
-        if (matchingNodeIds.length > 0) {
+        if (matchingNodes.length > 0) {
+            console.log(matchingNodes);
+            let matchingNodeIds = getNodesIds(matchingNodes);
+            console.log(matchingNodeIds);
             network.selectNodes(matchingNodeIds, false);
 
             // Display result on page
             let matchingNodeData = problems.filter(p => matchingNodeIds.includes(p["id"])).map(p => {
                 var paperList = p.introduced_at.map(function(paper) {
-                    return `title: ${paper.title}, author: ${paper.author}, publish date: ${paper['publish date']}`;
+                    return `title: ${paper.title}, author: ${paper.author}, publish date: ${paper.publish_date}, bibtex: ${paper.bibtex}, link: <a href=${paper.link}>${paper.link}</a>`;
                 }).join("<br>");
 
                 var div = `<div class="result-field">

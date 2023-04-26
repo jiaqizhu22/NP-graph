@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="./style.css">
     </head>
     <header class="header">
-        <h1>Graph of NP-Complete Problems</h1>
+        <h2>Graph of NP-Complete Problems</h2>
     </header> 
 
     <body class="wrapper">
@@ -49,8 +49,9 @@
             <div class="search-field">
                 <label for="implemented">Is Implemented: </label>
                 <select id="implemented">
-                    <option [ngValue]="true" selected>True</option>
+                    <option [ngValue]="true">True</option>
                     <option [ngValue]="false">False</option>
+                    <option [ngValue]="all" selected>All Possible Results</option>
                 </select>
             </div>
             
@@ -73,21 +74,25 @@
             <div class="search-field">
                 <label for="edge-verified">Is Verified: </label>
                 <select id="edge-verified">
-                    <option [ngValue]="true" selected>True</option>
+                    <option [ngValue]="true">True</option>
                     <option [ngValue]="false">False</option>
+                    <option [ngValue]="all" selected>All Possible Results</option>
                 </select>
             </div>
             <div class="search-field">
                 <label for="edge-implemented">Is Implemented: </label>
                 <select id="edge-implemented">
-                    <option [ngValue]="true" selected>True</option>
+                    <option [ngValue]="true">True</option>
                     <option [ngValue]="false">False</option>
+                    <option [ngValue]="all" selected>All Possible Results</option>
                 </select>
             </div>
             <div class="search-field">
                 <button id="search-edge-button">Search for edges</button>
-                <button id="search-all-button">Search for nodes and edges</button>
             </div> 
+            <div class="search-field">
+                <button id="search-all-button">Search for nodes and edges</button>
+            </div>
 
             <div class="search-field">
                 <label for="from-node">From node: </label>
@@ -98,8 +103,8 @@
                 <input type="text" id="to-node" placeholder="enter problem name" size="35">
             </div> 
             <div class="search-field">
-                <button id="find-path">Find path</button>
-                <button id="find-path-weight">Calculate path weight</button>
+                <button id="find-path">Find shortest path</button>
+                <button id="find-all-path">Find all paths</button>
             </div>
             <div class="search-field" id="my-node-result"></div>
             <div class="search-field" id="my-edge-result"></div>
@@ -107,7 +112,7 @@
 
         <div class="main">
             <div id="mynetwork">
-                <script type="module" src="./graph2.js"></script>
+                <script type="module" src="./index.js"></script>
             </div>
         </div>            
     </body>

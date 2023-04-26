@@ -1,18 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 #mynetwork {
-    width: 65vw;
-    height: 100vh;
+    width: 70vw;
+    height: 85vh;
     border: 1px solid lightslategrey;
-    margin: 1%;
+    margin-top: 1%;
+    padding: auto;
 }
 
 .header {
     width: 100%; /** Use 100% to fill the width of the page **/
     position: sticky;
     text-align: center;
-    padding: 0%;
-    margin: 0%;
+    padding: auto;
+    margin-left: auto;
+    margin-right: auto;
     background-color: rgb(59, 147, 225);
 }
 
@@ -24,7 +26,7 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
-    margin: 1%;
+    margin: auto;
 }
 
 .wrapper > * {
@@ -79,12 +81,11 @@
     .aside-1 { 
         flex: 1;
         order: 1; 
-        width: 30vw;
+        width: 40vw;
     }
     .main    { order: 2; }
-    .aside-2 { order: 3; }
     .footer { 
-        order: 4;
+        order: 3;
         width: 100%;
     }
 }

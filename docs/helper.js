@@ -15,20 +15,23 @@ function strMatchSubstr(str, substrings) {
             matches += 1;
         }
     }
+    console.log(matches);
+    console.log(matches > 0 ? true : false);
     return matches > 0 ? true : false;
 };
 
 function listStrMatchSubstr(strings, substrings) {
-    if (strings.length === 0) return true;
     let matches = 0;
     for (let i = 0; i < substrings.length; i++) {
         for (let j = 0; j < strings.length; j++) {
-            if (strings[j].includes(substrings[i])) {
+            if (strings[j].toLowerCase().includes(substrings[i])) {
                 console.log(`${strings[j]} contains ${substrings[i]}`);
                 matches += 1;
             }
         }
     }
+    console.log(matches);
+    console.log(matches > 0 ? true : false);
     return matches > 0 ? true : false;
 };
 

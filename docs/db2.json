@@ -1,14 +1,14 @@
 {
     "problems": [
         {
-            "id": "1",
+            "id": 1,
             "name": "SAT",
             "also_known_as": ["Satisfiability", "Boolean satisfiability problem", "propositional satisfiability problem", "B-SAT"],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -19,14 +19,14 @@
             "implemented": true
         },
         {
-            "id": "2",
+            "id": 2,
             "name": "Clique",
             "also_known_as": ["Clique problem"],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -37,14 +37,14 @@
             "implemented": true
         },
         {
-            "id": "3",
+            "id": 3,
             "name": "0-1 Integer Programming",
             "also_known_as": ["integer programming", "integer linear programming", "ILP", "mixed-integer programming"],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -55,14 +55,14 @@
             "implemented": true
         },
         {
-            "id": "4",
+            "id": 4,
             "name": "3SAT",
             "also_known_as": ["3CNFSAT", "3-SAT", "3-satisfiability"],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -73,14 +73,14 @@
             "implemented": true
         },
         {
-            "id": "5",
+            "id": 5,
             "name": "Node Cover",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -91,14 +91,14 @@
             "implemented": true
         }, 
         {
-            "id": "6",
+            "id": 6,
             "name": "Set Packing",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -109,14 +109,14 @@
             "implemented": true
         }, 
         {
-            "id": "7",
+            "id": 7,
             "name": "Chromatic Number",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -127,14 +127,14 @@
             "implemented": true
         }, 
         {
-            "id": "8",
+            "id": 8,
             "name": "Feedback Node Set",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -145,14 +145,14 @@
             "implemented": true
         },
         {
-            "id": "9",
+            "id": 9,
             "name": "Feedback Arc Set",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -163,14 +163,14 @@
             "implemented": true
         },
         {
-            "id": "10",
+            "id": 10,
             "name": "Directed Hamilton Circuit",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -181,14 +181,14 @@
             "implemented": true
         },
         {
-            "id": "11",
+            "id": 11,
             "name": "Set Covering",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -199,14 +199,14 @@
             "implemented": true
         },
         {
-            "id": "12",
+            "id": 12,
             "name": "Exact Cover",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -217,14 +217,14 @@
             "implemented": true
         },
         {
-            "id": "13",
+            "id": 13,
             "name": "Clique Cover",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -235,14 +235,14 @@
             "implemented": true
         },
         {
-            "id": "14",
+            "id": 14,
             "name": "Undirected Hamilton Circuit",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -253,14 +253,14 @@
             "implemented": true
         },
         {
-            "id": "15",
+            "id": 15,
             "name": "3-Dimensional Matching",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -271,14 +271,14 @@
             "implemented": true
         },
         {
-            "id": "16",
+            "id": 16,
             "name": "Knapsack",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -289,14 +289,14 @@
             "implemented": true
         },
         {
-            "id": "17",
+            "id": 17,
             "name": "Hitting Set",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -307,14 +307,14 @@
             "implemented": true
         },
         {
-            "id": "18",
+            "id": 18,
             "name": "Steiner Tree",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -325,14 +325,14 @@
             "implemented": true
         },
         {
-            "id": "19",
+            "id": 19,
             "name": "Sequencing",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -343,14 +343,14 @@
             "implemented": true
         },
         {
-            "id": "20",
+            "id": 20,
             "name": "Partition",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -361,14 +361,14 @@
             "implemented": true 
         },
         {
-            "id": "21",
+            "id": 21,
             "name": "Max Cut",
             "also_known_as": [],
             "introduced_at": [
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -379,7 +379,7 @@
             "implemented": true
         },
         {
-            "id": "22",
+            "id": 22,
             "name": "Test Node 1",
             "also_known_as": ["fake node"],
             "introduced_at": [],
@@ -399,7 +399,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -418,7 +418,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -437,7 +437,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -456,7 +456,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -475,7 +475,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -494,7 +494,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -513,7 +513,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -532,7 +532,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -551,7 +551,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -570,7 +570,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -589,7 +589,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -608,7 +608,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -627,7 +627,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -646,7 +646,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -665,7 +665,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -684,7 +684,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -703,7 +703,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -722,7 +722,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -741,7 +741,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
@@ -760,7 +760,7 @@
                 {
                     "title": "Reducibility Among Combinatorial Problems",
                     "author": "Richard Karp",
-                    "publish date": "1972",
+                    "publish_date": "1972",
                     "bibtex": "@book{karp2010reducibility,\ntitle={Reducibility among combinatorial problems},\nauthor={Karp, Richard M},\nyear={2010},\npublisher={Springer}\n}",
                     "link": "https://link.springer.com/chapter/10.1007/978-3-540-68279-0_8"
                 }
