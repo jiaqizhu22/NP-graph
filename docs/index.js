@@ -102,189 +102,44 @@ const displayEdgeResult = document.getElementById("my-edge-result");
 var matchingNodeIds = allNodeIds;
 var matchingEdgeIds = allEdgeIds;
 
-/*
-function matchingNodes(node, searchQuery) {
-    let target = Object.keys(searchQuery).length;
-    let matchingFieldCount = 0;
-    for (let field in searchQuery) {
-        if (field === "problemName") {
-            let fieldKeywords = searchQuery[field];
-            if (fieldKeywords.includes(node["name"].toLowerCase())) {
-                matchingFieldCount++;
-            } else {
-                let nodeKeywords = node["name"].toLowerCase().split(" ");
-                for (let i = 0; i < node["also_known_as"].length; i++) {
-                    nodeKeywords.push(node["also_known_as"][i].toLowerCase());
-                }
-                for (let i = 0; i < fieldKeywords.length; i++) {
-                    if (nodeKeywords.includes(fieldKeywords[i])) {
-                        matchingFieldCount++;
-                    }
-                }
-            }
-        }
-        if (field === "paperTitle") {
-            for (let i = 0; i < node["introduced_at"].length; i++) {
-                let paper = node["introduced_at"][i];
-                let fieldKeywords = searchQuery[field];
-                if (fieldKeywords.includes(paper["title"].toLowerCase())) {
-                    matchingFieldCount++;
-                } else {
-                    let titleKeywords = paper["title"].toLowerCase().split(" ");
-                    for (let i = 0; i < fieldKeywords.length; i++) {
-                        if (titleKeywords.includes(fieldKeywords[i])) {
-                            matchingFieldCount++;
-                        }
-                    }
-                }
-            }
-        }
-        if (field === "author") {
-            for (let i = 0; i < node["introduced_at"].length; i++) {
-                let paper = node["introduced_at"][i];
-                let fieldKeywords = searchQuery[field];
-                if (fieldKeywords.includes(paper["author"].toLowerCase())) {
-                    matchingFieldCount++;
-                } else {
-                    let titleKeywords = paper["author"].toLowerCase().split(" ");
-                    for (let i = 0; i < fieldKeywords.length; i++) {
-                        if (titleKeywords.includes(fieldKeywords[i])) {
-                            matchingFieldCount++;
-                        }
-                    }
-                }
-            }
-        }
-        if (field === "categories") {
-            for (let i = 0; i < node["category"].length; i++) {
-                let category = node["category"][i].toLowerCase();
-                let fieldKeywords = searchQuery[field];
-                if (fieldKeywords.includes(category)) {
-                    matchingFieldCount++;
-                }
-            }
-        }
-        if (field === "implemented" && node.implemented.toString() === searchQuery[field]) {
-            matchingFieldCount++;
-        }
-    }
-    if (matchingFieldCount === target) {
-        return true;
-    }
-    return false;
-}
-
-
-function matchingEdges(edge, searchQuery) {
-    let target = Object.keys(searchQuery).length;
-    let matchingFieldCount = 0;
-    for (let field in searchQuery) {
-        if (field === "paperTitle") {
-            for (let i = 0; i < edge["introduced_at"].length; i++) {
-                let paper = edge["introduced_at"][i];
-                let fieldKeywords = searchQuery[field];
-                if (fieldKeywords.includes(paper["title"].toLowerCase())) {
-                    matchingFieldCount++;
-                } else {
-                    let titleKeywords = paper["title"].toLowerCase().split(" ");
-                    for (let i = 0; i < fieldKeywords.length; i++) {
-                        if (titleKeywords.includes(fieldKeywords[i])) {
-                            matchingFieldCount++;
-                        }
-                    }
-                }
-            }
-        }
-        if (field === "author") {
-            for (let i = 0; i < edge["introduced_at"].length; i++) {
-                let paper = edge["introduced_at"][i];
-                let fieldKeywords = searchQuery[field];
-                if (fieldKeywords.includes(paper["author"].toLowerCase())) {
-                    matchingFieldCount++;
-                } else {
-                    let titleKeywords = paper["author"].toLowerCase().split(" ");
-                    for (let i = 0; i < fieldKeywords.length; i++) {
-                        if (titleKeywords.includes(fieldKeywords[i])) {
-                            matchingFieldCount++;
-                        }
-                    }
-                }
-            }
-        }
-        if (field === "implemented" && edge.implemented.toString() === searchQuery[field]) {
-            matchingFieldCount++;
-        }
-        if (field === "verified" && edge.verified.toString() === searchQuery[field]) {
-            matchingFieldCount++;
-        }
-    }
-    if (matchingFieldCount === target) {
-        return true;
-    }
-    return false;
-}
-*/
-
-function filterByPaper(node, keywords) {
-    let papers = node.introduced_at;
-    
-};
-
 function getNodesIds(matchingNodes) {
     let ids = [];
     for (let i = 0; i < matchingNodes.length; i++) {
         ids.push(matchingNodes[i].id);
     }
     return ids;
-}
+};
 
 // Search for nodes
 searchNodeButton.addEventListener("click", function(event) {
     event.preventDefault();
 
-    // Get all search keywords
     let queries = {};
-
-    // A list of substrings or []
     if (document.getElementById("problem-name").value !== "") {
         queries["name"] = helper.trimSpace(document.getElementById("problem-name").value);
-        console.log(queries.name);
     }
-    //let problemName = helper.trimSpace(document.getElementById("problem-name").value);
     if (document.getElementById("paper-name").value !== "") {
         queries["title"] = helper.trimSpace(document.getElementById("paper-name").value);
     }
-    //let paperTitle = helper.trimSpace(document.getElementById("paper-name").value);
     if (document.getElementById("author-name").value !== "") {
         queries["author"] = helper.trimSpace(document.getElementById("author-name").value);
     }
-    //let authorName = helper.trimSpace(document.getElementById("author-name").value);
     if (document.getElementById("algorithms").value !== "") {
         queries["algorithms"] = helper.trimSpace(document.getElementById("algorithms").value);
     }
-    // let algorithms = helper.trimSpace(document.getElementById("algorithms").value);
     if (document.getElementById("categories").value !== "") {
         queries["categories"] = helper.trimSpace(document.getElementById("categories").value);
     }
-    // let categories = helper.trimSpace(document.getElementById("categories").value);
-    
     // Date in format of yyyy-mm-dd or empty as ""
     if (document.getElementById("from-date").value !== "") {
         queries["fromDate"] = document.getElementById("from-date").value;
     }
-    //let fromDate = document.getElementById("from-date").value;
     if ( document.getElementById("to-date").value !== "") {
         queries["toDate"] =  document.getElementById("to-date").value;
     }
-    //let toDate = document.getElementById("to-date").value;
-    
-    // true or false
-    //console.log(document.getElementById("implemented").value.toLowerCase());
     if (document.getElementById("implemented").value.toLowerCase() !== "all possible results") {
         queries["implemented"] = document.getElementById("implemented").value.toLowerCase()
     }
-    console.log(queries);
-    
     if (Object.keys(queries).length < 1) {
         displayResult.innerHTML = "";
         network.selectNodes(allNodeIds);
@@ -292,7 +147,6 @@ searchNodeButton.addEventListener("click", function(event) {
         var matchingNodes = problems;
         let keys = Object.keys(queries);
         for (let k = 0; k < keys.length; k++) {
-            console.log(keys[k]);
             if (keys[k] === "name") {
                 matchingNodes = matchingNodes.filter(function(p){
                     if (helper.strMatchSubstr(p.name.toLowerCase(), queries.name) || helper.listStrMatchSubstr(p.also_known_as, queries.name)) {
@@ -347,12 +201,33 @@ searchNodeButton.addEventListener("click", function(event) {
             if (keys[k] === "implemented") {
                 matchingNodes = matchingNodes.filter(function(p) { return p.implemented.toString() === queries.implemented;});
             }
+            if (keys[k] === "fromDate") {
+                let target = new Date(queries.fromDate);
+                matchingNodes = matchingNodes.filter(function(p) {
+                    for (let i = 0; i < p.introduced_at.length; i++) {
+                        let curr = new Date(p.introduced_at[i].publish_date);
+                        if (curr >= target) {
+                            return true;
+                        }
+                    }
+                    return false;
+                });
+            }
+            if (keys[k] === "toDate") {
+                let target = new Date(queries.toDate);
+                matchingNodes = matchingNodes.filter(function(p) {
+                    for (let i = 0; i < p.introduced_at.length; i++) {
+                        let curr = new Date(p.introduced_at[i].publish_date);
+                        if (curr <= target) {
+                            return true;
+                        }
+                    }
+                    return false;
+                });
+            }
         }
-
         if (matchingNodes.length > 0) {
-            console.log(matchingNodes);
             let matchingNodeIds = getNodesIds(matchingNodes);
-            console.log(matchingNodeIds);
             network.selectNodes(matchingNodeIds, false);
 
             // Display result on page
@@ -360,7 +235,6 @@ searchNodeButton.addEventListener("click", function(event) {
                 var paperList = p.introduced_at.map(function(paper) {
                     return `title: ${paper.title}, author: ${paper.author}, publish date: ${paper.publish_date}, bibtex: ${paper.bibtex}, link: <a href=${paper.link}>${paper.link}</a>`;
                 }).join("<br>");
-
                 var div = `<div class="result-field">
                     <p>id: ${p.id}&nbsp;
                     name: ${p.name}&nbsp;
@@ -382,6 +256,14 @@ searchNodeButton.addEventListener("click", function(event) {
         } 
     }
 });
+
+function getEdgesIds(matchingEdges) {
+    let ids = [];
+    for (let i = 0; i < matchingEdgs.length; i++) {
+        ids.push(matchingEdges[i].id);
+    }
+    return ids;
+};
 
 searchEdgeButton.addEventListener("click", function(event) {
     event.preventDefault();

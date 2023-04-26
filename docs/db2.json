@@ -382,10 +382,18 @@
             "id": 22,
             "name": "Test Node 1",
             "also_known_as": ["fake node"],
-            "introduced_at": [],
+            "introduced_at": [
+                {
+                    "title": "test fake title",
+                    "author": "jiaqi zhu",
+                    "publish_date": "2023-01-01",
+                    "bibtex": "",
+                    "link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                }
+            ],
             "parameters" : [],
-            "algorithms": [],
-            "category": ["Z"],
+            "algorithms": ["nothing"],
+            "category": ["Z", "F"],
             "implemented": false
         }
     ],
@@ -775,7 +783,15 @@
             "input": 11,
             "output": 14,
             "weight": 1,
-            "introduced_at": [],
+            "introduced_at": [
+                {
+                    "title": "test1",
+                    "author": "jiaqi zhu",
+                    "publish_date": "2000-01-31",
+                    "bibtex": "",
+                    "link": ""
+                }
+            ],
             "formulas": [],
             "implemented": false, 
             "verified": true,
@@ -786,7 +802,15 @@
             "input": 16,
             "output": 21,
             "weight": 1,
-            "introduced_at": [],
+            "introduced_at": [
+                {
+                    "title": "test1",
+                    "author": "jiaqi zhu",
+                    "publish_date": "2000-01-31",
+                    "bibtex": "",
+                    "link": ""
+                }
+            ],
             "formulas": [],
             "implemented": false, 
             "verified": false,
@@ -797,7 +821,15 @@
             "input": 1,
             "output": 22,
             "weight": 1,
-            "introduced_at": [],
+            "introduced_at": [
+                {
+                    "title": "test2",
+                    "author": "jiaqi zhu",
+                    "publish_date": "2003-01-31",
+                    "bibtex": "",
+                    "link": ""
+                }
+            ],
             "formulas": [],
             "implemented": false, 
             "verified": true,
@@ -808,7 +840,15 @@
             "input": 4,
             "output": 22,
             "weight": 1,
-            "introduced_at": [],
+            "introduced_at": [
+                {
+                    "title": "test2",
+                    "author": "jiaqi zhu",
+                    "publish_date": "2005-12-31",
+                    "bibtex": "",
+                    "link": ""
+                }
+            ],
             "formulas": [],
             "implemented": false, 
             "verified": false,
