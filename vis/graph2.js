@@ -10,20 +10,26 @@ var edges = new vis.DataSet();
 for (let i = 0; i < problems.length; i++) {
     let node = JSON.parse(JSON.stringify(problems[i]));
     let node_info = JSON.stringify(node).replace(/:/g, ': ').replace(/\\n/g, '').replace(/,/g, ',\n');
-    nodes.add({id: problems[i]["id"], label: problems[i]["name"], category: problems[i]["category"][0], title: node_info}); 
+    nodes.add({
+        id: problems[i].id, 
+        label: problems[i].name, 
+        category: problems[i]["category"][0], 
+        title: node_info
+    }); 
 }
 
 // Add edges
 for (let i = 0; i < reductions.length; i++) {
     let edge = JSON.parse(JSON.stringify(reductions[i]));
-    let edge_info = JSON.stringify(edge).replace(/:/g, ': ').replace(/,/g, ',\n');
+    let edge_info = JSON.stringify(edge).replace(/:/g, ': ').replace(/\\n/g, '').replace(/,/g, ',\n');
     edges.add({
-        from: reductions[i]["input"], 
-        to: reductions[i]["output"], 
-        weight: reductions[i]["weight"], 
+        id: reductions[i].id,
+        from: reductions[i].input, 
+        to: reductions[i].output, 
+        weight: reductions[i].weight, 
         title: edge_info, 
         arrows: { to: { enabled: true, type: "arrow" }}, 
-        dashes: !reductions[i]["implemented"]
+        dashes: !reductions[i].implemented
     });
 }
 
@@ -228,7 +234,7 @@ function matchingEdges(edge, searchQuery) {
 
 function filterByPaper(node, keywords) {
     let papers = node.introduced_at;
-    if 
+    
 };
 
 // Search for nodes
